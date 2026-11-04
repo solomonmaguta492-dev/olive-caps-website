@@ -1,6 +1,6 @@
 import { getSettings, createOrder } from "./api.js";
 import { getCart, setQuantity, removeFromCart, clearCart } from "./cart.js";
-import { formatKES, escapeHtml, applyShopSettings } from "./ui.js";
+import { formatKES, escapeHtml, applyShopSettings, whatsappLink } from "./ui.js";
 
 const itemsBox = document.getElementById("cart-items");
 const checkoutSection = document.getElementById("checkout");
@@ -72,7 +72,19 @@ function currentDeliveryFee() {
   return zone ? zone.fee : 0;
 }
 
+// Writes the cart as a WhatsApp message for customers who prefer to chat.
+function updateWhatsappOrderLink() {
+  const items = getCart();
+  if (!settings || items.length === 0) return;
+  const lines = items.map((i) => `- ${i.quantity} x ${i.name} (${i.colour})`).join("\n");
+  const message = `Hi Olive Caps, I'd like to order:\n${lines}\nSubtotal: ${formatKES(subtotal(items))}`;
+  document.querySelectorAll("#checkout [data-whatsapp]").forEach((a) => {
+    a.href = whatsappLink(message, settings.whatsappNumber);
+  });
+}
+
 function renderTotals() {
+  updateWhatsappOrderLink();
   const sub = subtotal(getCart());
   const fee = currentDeliveryFee();
   const deliveryText = selectedMethod() === "pickup" ? "Free pickup" : formatKES(fee);
