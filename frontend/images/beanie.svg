@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="Knit beanie">
+  <rect width="400" height="300" fill="#f3eee0"/>
+  <ellipse cx="200" cy="240" rx="130" ry="13" fill="#e0d9c4"/>
+  <path d="M95 180 C95 100 145 60 200 60 C255 60 305 100 305 180 Z" fill="#6b7f3a"/>
+  <g stroke="#5a6c2f" stroke-width="5">
+    <path d="M120 175 L125 105"/><path d="M145 175 L148 85"/><path d="M172 175 L173 70"/>
+    <path d="M200 175 L200 64"/><path d="M228 175 L227 70"/><path d="M255 175 L252 85"/><path d="M280 175 L275 105"/>
+  </g>
+  <rect x="85" y="172" width="230" height="58" rx="12" fill="#556b2f"/>
+  <g stroke="#46592a" stroke-width="5">
+    <path d="M110 178 V224"/><path d="M135 178 V224"/><path d="M160 178 V224"/><path d="M185 178 V224"/>
+    <path d="M210 178 V224"/><path d="M235 178 V224"/><path d="M260 178 V224"/><path d="M285 178 V224"/>
+  </g>
+</svg>
