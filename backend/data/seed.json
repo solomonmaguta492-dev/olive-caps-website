@@ -1,0 +1,138 @@
+{
+  "settings": {
+    "shopName": "Olive Caps",
+    "currency": "KES",
+    "whatsappNumber": "254700000000",
+    "phone": "+254 700 000 000",
+    "email": "hello@olivecaps.co.ke",
+    "instagram": "olivecaps",
+    "categories": ["Baseball Caps", "Trucker Hats", "Snapbacks", "Beanies", "Bucket Hats"],
+    "wholesale": {
+      "minQuantity": 10,
+      "note": "Resellers: buy 10 or more of the same cap and pay the wholesale price."
+    },
+    "deliveryZones": [
+      { "id": "nairobi-cbd", "name": "Nairobi CBD", "fee": 150, "days": "Same day" },
+      { "id": "nairobi-estates", "name": "Nairobi estates", "fee": 250, "days": "1 day" },
+      { "id": "nairobi-metro", "name": "Kiambu, Machakos, Kajiado", "fee": 350, "days": "1-2 days" },
+      { "id": "upcountry", "name": "Rest of Kenya (courier)", "fee": 450, "days": "2-3 days" }
+    ],
+    "pickupPoints": [
+      { "id": "cbd-moi-avenue", "name": "Nairobi CBD, Moi Avenue", "hours": "Mon-Sat, 9am-6pm" },
+      { "id": "westlands", "name": "Westlands, Sarit area", "hours": "Mon-Sat, 10am-5pm" }
+    ]
+  },
+  "products": [
+    {
+      "id": "p001",
+      "name": "Classic Olive Baseball Cap",
+      "category": "Baseball Caps",
+      "price": 900,
+      "wholesalePrice": 650,
+      "description": "Cotton twill cap with a curved brim and adjustable strap. Our signature colour.",
+      "colours": ["Olive", "Black", "Beige"],
+      "image": "images/baseball-cap.svg",
+      "stock": 25
+    },
+    {
+      "id": "p002",
+      "name": "Everyday Black Baseball Cap",
+      "category": "Baseball Caps",
+      "price": 850,
+      "wholesalePrice": 600,
+      "description": "Plain black cap that goes with everything. Breathable cotton, one size fits most.",
+      "colours": ["Black", "Navy"],
+      "image": "images/baseball-cap.svg",
+      "stock": 40
+    },
+    {
+      "id": "p003",
+      "name": "Mesh Trucker Hat",
+      "category": "Trucker Hats",
+      "price": 1000,
+      "wholesalePrice": 720,
+      "description": "Foam front with breathable mesh back and snap closure. Cool in the Nairobi heat.",
+      "colours": ["White/Olive", "Black/Black", "Navy/White"],
+      "image": "images/trucker-hat.svg",
+      "stock": 18
+    },
+    {
+      "id": "p004",
+      "name": "Retro Trucker Hat",
+      "category": "Trucker Hats",
+      "price": 1100,
+      "wholesalePrice": 800,
+      "description": "High-crown trucker with a contrast panel and mesh back.",
+      "colours": ["Red/White", "Green/White"],
+      "image": "images/trucker-hat.svg",
+      "stock": 4
+    },
+    {
+      "id": "p005",
+      "name": "Flat Brim Snapback",
+      "category": "Snapbacks",
+      "price": 1200,
+      "wholesalePrice": 880,
+      "description": "Structured six-panel snapback with a flat brim and adjustable snap closure.",
+      "colours": ["Black", "Grey", "Olive"],
+      "image": "images/snapback.svg",
+      "stock": 30
+    },
+    {
+      "id": "p006",
+      "name": "Street Snapback",
+      "category": "Snapbacks",
+      "price": 1300,
+      "wholesalePrice": 950,
+      "description": "Wool-blend snapback with a green under-brim.",
+      "colours": ["Navy", "Maroon"],
+      "image": "images/snapback.svg",
+      "stock": 0
+    },
+    {
+      "id": "p007",
+      "name": "Ribbed Knit Beanie",
+      "category": "Beanies",
+      "price": 700,
+      "wholesalePrice": 480,
+      "description": "Warm double-layer knit beanie with a fold-up cuff. Great for cold mornings.",
+      "colours": ["Olive", "Black", "Grey", "Mustard"],
+      "image": "images/beanie.svg",
+      "stock": 50
+    },
+    {
+      "id": "p008",
+      "name": "Fisherman Beanie",
+      "category": "Beanies",
+      "price": 750,
+      "wholesalePrice": 520,
+      "description": "Short, snug beanie that sits above the ears.",
+      "colours": ["Black", "Cream"],
+      "image": "images/beanie.svg",
+      "stock": 12
+    },
+    {
+      "id": "p009",
+      "name": "Cotton Bucket Hat",
+      "category": "Bucket Hats",
+      "price": 950,
+      "wholesalePrice": 680,
+      "description": "Soft cotton bucket hat with a short brim that shades your face from the sun.",
+      "colours": ["Olive", "Khaki", "Black"],
+      "image": "images/bucket-hat.svg",
+      "stock": 22
+    },
+    {
+      "id": "p010",
+      "name": "Reversible Bucket Hat",
+      "category": "Bucket Hats",
+      "price": 1150,
+      "wholesalePrice": 830,
+      "description": "Two looks in one: plain on one side, pattern on the other.",
+      "colours": ["Olive/Camo", "Black/Check"],
+      "image": "images/bucket-hat.svg",
+      "stock": 3
+    }
+  ],
+  "orders": []
+}
