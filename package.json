@@ -1,0 +1,11 @@
+{
+  "name": "olive-caps-website",
+  "private": true,
+  "description": "Olive Caps online store: run everything from the project root",
+  "scripts": {
+    "setup": "npm --prefix backend install",
+    "start": "npm --prefix backend start",
+    "dev": "npm --prefix backend run dev",
+    "test": "npm --prefix backend test"
+  }
+}
