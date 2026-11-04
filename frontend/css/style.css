@@ -61,6 +61,10 @@ h3 {
   margin-inline: auto;
 }
 
+.container.narrow {
+  max-width: 720px;
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;
