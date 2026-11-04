@@ -177,3 +177,9 @@ test("Beanies category includes the 13 new beanies", async () => {
   const ids = caps.map((p) => p.id);
   for (let n = 46; n <= 58; n++) assert.ok(ids.includes(`p0${n}`));
 });
+
+test("Bucket Hats category includes the 10 new hats", async () => {
+  const caps = await (await fetch(`${base}/api/products?category=Bucket%20Hats`)).json();
+  const ids = caps.map((p) => p.id);
+  for (let n = 59; n <= 68; n++) assert.ok(ids.includes(`p0${n}`));
+});
