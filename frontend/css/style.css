@@ -625,3 +625,102 @@ h3 {
   margin: 0 auto 1rem;
   opacity: 0.8;
 }
+
+/* Forms */
+.form-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 0 0 1.4rem;
+}
+
+legend {
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 0.8rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.field label {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.field .hint {
+  font-size: 0.83rem;
+  color: var(--muted);
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  min-height: 46px;
+  padding: 0.6rem 0.8rem;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-sm);
+  font: inherit;
+  background: var(--white);
+}
+
+.field textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: var(--olive);
+  outline: none;
+}
+
+.field.invalid input,
+.field.invalid select {
+  border-color: var(--danger);
+}
+
+.choice-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.7rem;
+}
+
+.choice {
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+  padding: 0.9rem;
+  border: 2px solid var(--line);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  background: var(--white);
+}
+
+.choice:has(input:checked) {
+  border-color: var(--olive);
+  background: var(--olive-light);
+}
+
+.choice input {
+  margin-top: 0.25rem;
+  accent-color: var(--olive);
+}
+
+.choice small {
+  display: block;
+  color: var(--muted);
+}
+
+.hidden {
+  display: none !important;
+}
