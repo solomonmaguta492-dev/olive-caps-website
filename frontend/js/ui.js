@@ -1,4 +1,5 @@
 import { cartCount } from "./cart.js";
+import "./whatsapp-chooser.js";
 
 const DEFAULT_WHATSAPP = "254790066759";
 
