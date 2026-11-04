@@ -173,6 +173,7 @@ function editProduct(product) {
   productForm.colours.value = product.colours.join(", ");
   productForm.sizes.value = (product.sizes || []).join(", ");
   productForm.imageBack.value = product.imageBack || "";
+  productForm.imageBackLabel.value = product.imageBackLabel || "";
   productForm.image.value = product.image;
   productForm.description.value = product.description;
   document.getElementById("product-form-title").textContent = `Edit ${product.name}`;
