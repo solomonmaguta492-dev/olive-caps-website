@@ -140,3 +140,20 @@ test("admin can add a product and update stock", async () => {
   });
   assert.equal((await patch.json()).stock, 9);
 });
+
+test("fitted New Era cap needs a size and keeps it on the order", async () => {
+  const item = { productId: "p012", colour: "Black/White", quantity: 1 };
+  const noSize = await post("/api/orders", { ...goodOrder, items: [item] });
+  assert.equal(noSize.status, 400);
+
+  const res = await post("/api/orders", { ...goodOrder, items: [{ ...item, size: "7 1/4" }] });
+  assert.equal(res.status, 201);
+  const order = await res.json();
+  assert.equal(order.items[0].size, "7 1/4");
+  assert.equal(order.total, 3500);
+});
+
+test("New Era category lists the new caps", async () => {
+  const caps = await (await fetch(`${base}/api/products?category=New%20Era`)).json();
+  assert.equal(caps.length, 13);
+});
