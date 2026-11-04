@@ -1,0 +1,26 @@
+# One-click deploy on Render: New > Blueprint > pick this repo.
+services:
+  - type: web
+    name: olive-caps
+    runtime: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: ADMIN_PASSWORD
+        generateValue: true
+      - key: MPESA_MODE
+        value: mock
+      - key: MPESA_CONSUMER_KEY
+        sync: false
+      - key: MPESA_CONSUMER_SECRET
+        sync: false
+      - key: MPESA_SHORTCODE
+        value: "174379"
+      - key: MPESA_PASSKEY
+        sync: false
+      - key: MPESA_CALLBACK_URL
+        sync: false
