@@ -28,6 +28,10 @@ export function createOrder(order) {
   return request("/api/orders", { method: "POST", body: JSON.stringify(order) });
 }
 
+export function getHealth() {
+  return request("/api/health");
+}
+
 export function getOrder(orderNumber) {
   return request(`/api/orders/${encodeURIComponent(orderNumber)}`);
 }
