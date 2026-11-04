@@ -1155,13 +1155,14 @@
       "category": "Bucket Hats",
       "price": 950,
       "wholesalePrice": 680,
-      "description": "Soft cotton bucket hat with a short brim that shades your face from the sun.",
+      "description": "Soft cotton bucket hat with a short brim that shades your face from the sun. Black has a grey under-brim.",
       "colours": [
+        "Black",
+        "White",
         "Olive",
-        "Khaki",
-        "Black"
+        "Khaki"
       ],
-      "image": "images/bucket-hat.svg",
+      "image": "images/bucket/cotton-bucket-black-white.webp",
       "stock": 22
     },
     {
@@ -1170,12 +1171,13 @@
       "category": "Bucket Hats",
       "price": 1150,
       "wholesalePrice": 830,
-      "description": "Two looks in one: plain on one side, pattern on the other.",
+      "description": "Two looks in one: wear the plain side or flip it to the pattern. The cream one has a TEAMLTD palm check print.",
       "colours": [
+        "Cream/Palm Check",
         "Olive/Camo",
         "Black/Check"
       ],
-      "image": "images/bucket-hat.svg",
+      "image": "images/bucket/reversible-bucket-cream-palm.webp",
       "stock": 3
     }
   ],
