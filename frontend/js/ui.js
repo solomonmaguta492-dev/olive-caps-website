@@ -1,6 +1,6 @@
 import { cartCount } from "./cart.js";
 
-const DEFAULT_WHATSAPP = "254798913169";
+const DEFAULT_WHATSAPP = "254790066759";
 
 export function formatKES(amount) {
   return "KES " + Number(amount || 0).toLocaleString("en-KE");
