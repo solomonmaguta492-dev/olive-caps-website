@@ -999,7 +999,7 @@
         "Grey",
         "Mustard"
       ],
-      "image": "images/beanie.svg",
+      "image": "images/beanies/ribbed-knit-beanie-olive.webp",
       "stock": 50
     },
     {
@@ -1008,12 +1008,13 @@
       "category": "Beanies",
       "price": 750,
       "wholesalePrice": 520,
-      "description": "Short, snug beanie that sits above the ears.",
+      "description": "Short, snug docker-style beanie that sits above the ears. Chunky rib knit with a rolled cuff.",
       "colours": [
+        "Grey",
         "Black",
         "Cream"
       ],
-      "image": "images/beanie.svg",
+      "image": "images/beanies/fisherman-beanie-grey.webp",
       "stock": 12
     },
     {
