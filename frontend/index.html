@@ -34,7 +34,7 @@
           <h1>Caps for every style.</h1>
           <p>Baseball caps, trucker hats, snapbacks, beanies and bucket hats. Pay with M-Pesa, pick up in Nairobi or get it delivered anywhere in Kenya.</p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#shop" style="background: var(--mustard); color: var(--ink);">Shop caps</a>
+            <a class="btn btn-accent" href="#shop">Shop caps</a>
             <a class="btn btn-outline" data-whatsapp href="#" target="_blank" rel="noopener">Order on WhatsApp</a>
           </div>
         </div>
@@ -51,7 +51,29 @@
       <div><strong>Talk to us</strong>WhatsApp, call or email</div>
     </div>
 
-    <!-- SHOP -->
+    <section class="section" id="shop">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Shop caps</h2>
+            <p>Prices in Kenya shillings. Choose a colour, then add to cart.</p>
+          </div>
+          <div class="search-box">
+            <label for="search" class="visually-hidden">Search caps</label>
+            <input type="search" id="search" placeholder="Search caps, colours..." autocomplete="off">
+          </div>
+        </div>
+
+        <div class="filters" id="filters" role="group" aria-label="Filter by category"></div>
+        <p class="result-note" id="result-note" aria-live="polite"></p>
+
+        <div class="product-grid" id="product-grid">
+          <div class="loading"><div class="spinner"></div>Loading caps...</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHOLESALE -->
   </main>
 
   <footer class="site-footer">
