@@ -3,7 +3,8 @@ import { notifyShopOwner, notifyCustomer } from "./notify.js";
 
 // Order numbers look like OC-20261104-4821.
 export function createOrderNumber(existingOrders, date = new Date()) {
-  const day = date.toISOString().slice(0, 10).replace(/-/g, "");
+  // Uses the date in Kenya, not UTC, so late-night orders get the right day.
+  const day = date.toLocaleDateString("en-CA", { timeZone: "Africa/Nairobi" }).replace(/-/g, "");
   let number;
   do {
     number = `OC-${day}-${Math.floor(1000 + Math.random() * 9000)}`;
