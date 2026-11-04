@@ -74,3 +74,73 @@ h3 {
   outline: 3px solid var(--mustard);
   outline-offset: 2px;
 }
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 46px;
+  padding: 0.7rem 1.3rem;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  font: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: var(--olive);
+  color: var(--white);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--olive-dark);
+}
+
+.btn-outline {
+  background: transparent;
+  border-color: var(--olive);
+  color: var(--olive-dark);
+}
+
+.btn-outline:hover {
+  background: var(--olive-light);
+}
+
+.btn-whatsapp {
+  background: var(--whatsapp);
+  color: #0b3d1e;
+}
+
+.btn-small {
+  min-height: 36px;
+  padding: 0.35rem 0.9rem;
+  font-size: 0.9rem;
+}
+
+.btn-block {
+  width: 100%;
+}
+
+.link-button {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  color: var(--danger);
+  text-decoration: underline;
+  cursor: pointer;
+}
