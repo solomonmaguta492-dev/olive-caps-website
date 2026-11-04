@@ -273,6 +273,11 @@ h3 {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
 }
 
+.hero-image img {
+  width: 100%;
+  height: auto;
+}
+
 .trust-bar {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -407,6 +412,12 @@ h3 {
   align-items: baseline;
   justify-content: space-between;
   gap: 0.5rem;
+}
+
+.price,
+.line-total,
+.order-items li span:last-child {
+  white-space: nowrap;
 }
 
 .price {
@@ -1115,6 +1126,14 @@ legend {
 
   .brand span {
     font-size: 1.05rem;
+  }
+
+  .hero {
+    padding: 2rem 0;
+  }
+
+  .hero-image {
+    display: none;
   }
 
   .choice-group {
