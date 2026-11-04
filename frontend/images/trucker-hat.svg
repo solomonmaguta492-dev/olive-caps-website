@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="Trucker hat">
+  <defs>
+    <pattern id="mesh" width="10" height="10" patternUnits="userSpaceOnUse">
+      <rect width="10" height="10" fill="#2f3a1f"/>
+      <circle cx="5" cy="5" r="2.6" fill="#556b2f"/>
+    </pattern>
+  </defs>
+  <rect width="400" height="300" fill="#f2efe4"/>
+  <ellipse cx="200" cy="232" rx="150" ry="14" fill="#ddd8c6"/>
+  <path d="M95 190 C95 105 150 62 205 62 C265 62 310 110 310 190 Z" fill="url(#mesh)"/>
+  <path d="M95 190 C95 105 150 62 205 62 C220 62 232 66 240 70 C215 110 205 150 205 190 Z" fill="#f8f6ee"/>
+  <path d="M300 185 C345 185 375 200 380 215 C340 222 300 214 285 205 Z" fill="#2f3a1f"/>
+  <rect x="95" y="182" width="215" height="14" rx="6" fill="#2f3a1f"/>
+  <rect x="125" y="115" width="70" height="34" rx="6" fill="#c9a227"/>
+</svg>
