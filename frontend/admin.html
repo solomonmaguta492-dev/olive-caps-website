@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin | Olive Caps</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#556b2f">
+  <link rel="icon" href="images/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <img src="images/logo.svg" alt="" width="36" height="36">
+        <span>Olive Caps Admin</span>
+      </a>
+      <nav class="main-nav" aria-label="Admin">
+        <a href="index.html">View shop</a>
+        <button type="button" class="btn btn-outline btn-small hidden" id="logout">Log out</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="panel admin-login" id="login-panel">
+      <h1>Admin login</h1>
+      <form id="login-form" class="form-grid">
+        <div class="field">
+          <label for="password">Password</label>
+          <input id="password" type="password" autocomplete="current-password" required>
+        </div>
+        <div id="login-error" class="notice notice-error hidden" role="alert"></div>
+        <button class="btn btn-primary btn-block" type="submit">Log in</button>
+      </form>
+    </section>
+
+    <div id="dashboard" class="hidden">
+      <h1 class="page-title">Dashboard</h1>
+      <div class="stats" id="stats"></div>
+
+      <div class="admin-tabs" role="tablist">
+        <button type="button" class="chip" role="tab" data-tab="orders" aria-pressed="true">Orders</button>
+        <button type="button" class="chip" role="tab" data-tab="products" aria-pressed="false">Products & stock</button>
+      </div>
+
+      <section id="tab-orders">
+        <div class="admin-toolbar">
+          <label for="order-filter">Show</label>
+          <select id="order-filter">
+            <option value="all">All orders</option>
+            <option value="paid">Paid</option>
+            <option value="unpaid">Not paid</option>
+            <option value="processing">To prepare</option>
+          </select>
+          <button type="button" class="btn btn-outline btn-small" id="refresh-orders">Refresh</button>
+        </div>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Order</th><th>Customer</th><th>Items</th><th>Fulfilment</th>
+                <th>Total</th><th>Payment</th><th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="orders-body"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="tab-products" class="hidden">
+        <!-- PRODUCTS -->
+      </section>
+    </div>
+  </main>
+
+  <script type="module" src="js/admin.js"></script>
+</body>
+</html>
