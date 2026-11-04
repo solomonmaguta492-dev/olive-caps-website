@@ -95,7 +95,7 @@ function filteredProducts() {
 function update() {
   const list = filteredProducts();
   render(list);
-  const label = state.category === "All" ? "caps" : state.category.toLowerCase();
+  const label = state.category === "All" ? "caps" : state.category === "New Era" ? "New Era caps" : state.category.toLowerCase();
   resultNote.textContent = `Showing ${list.length} ${label}`;
 }
 
