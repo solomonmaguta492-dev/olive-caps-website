@@ -1,4 +1,4 @@
-import { admin } from "./api.js";
+import { admin, getSettings } from "./api.js";
 import { formatKES, escapeHtml, statusText, showToast } from "./ui.js";
 
 const KEY = "oliveCapsAdmin";
@@ -20,6 +20,9 @@ let orders = [];
 let products = [];
 
 const productsBody = document.getElementById("products-body");
+const productForm = document.getElementById("product-form");
+const productError = document.getElementById("product-error");
+const cancelEdit = document.getElementById("cancel-edit");
 
 function showDashboard(show) {
   loginPanel.classList.toggle("hidden", show);
@@ -151,6 +154,79 @@ productsBody.addEventListener("click", async (event) => {
   }
 });
 
+function resetProductForm() {
+  productForm.reset();
+  productForm.id.value = "";
+  document.getElementById("product-form-title").textContent = "Add a product";
+  cancelEdit.classList.add("hidden");
+  productError.classList.add("hidden");
+}
+
+function editProduct(product) {
+  productForm.id.value = product.id;
+  productForm.name.value = product.name;
+  productForm.category.value = product.category;
+  productForm.price.value = product.price;
+  productForm.wholesalePrice.value = product.wholesalePrice ?? "";
+  productForm.stock.value = product.stock;
+  productForm.colours.value = product.colours.join(", ");
+  productForm.image.value = product.image;
+  productForm.description.value = product.description;
+  document.getElementById("product-form-title").textContent = `Edit ${product.name}`;
+  cancelEdit.classList.remove("hidden");
+  productForm.scrollIntoView({ behavior: "smooth" });
+}
+
+productsBody.addEventListener("click", async (event) => {
+  const row = event.target.closest("tr[data-id]");
+  if (!row) return;
+  const product = products.find((p) => p.id === row.dataset.id);
+
+  if (event.target.closest("[data-edit]")) editProduct(product);
+
+  if (event.target.closest("[data-delete]")) {
+    if (!window.confirm(`Delete ${product.name}? This cannot be undone.`)) return;
+    try {
+      await admin.deleteProduct(password, product.id);
+      showToast("Product deleted");
+      await loadProducts();
+    } catch (err) {
+      showToast(err.message);
+    }
+  }
+});
+
+productForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  const data = Object.fromEntries(new FormData(productForm));
+  const id = data.id;
+  delete data.id;
+
+  try {
+    if (id) {
+      await admin.updateProduct(password, id, data);
+      showToast("Product updated");
+    } else {
+      await admin.addProduct(password, data);
+      showToast("Product added");
+    }
+    resetProductForm();
+    await loadProducts();
+  } catch (err) {
+    productError.textContent = err.message;
+    productError.classList.remove("hidden");
+  }
+});
+
+cancelEdit.addEventListener("click", resetProductForm);
+
+async function loadCategories() {
+  const settings = await getSettings();
+  productForm.category.innerHTML = settings.categories
+    .map((c) => `<option>${escapeHtml(c)}</option>`)
+    .join("");
+}
+
 // Switches between the orders and products tabs.
 document.querySelectorAll("[data-tab]").forEach((tab) => {
   tab.addEventListener("click", () => {
@@ -161,7 +237,7 @@ document.querySelectorAll("[data-tab]").forEach((tab) => {
 });
 
 async function loadDashboard() {
-  await Promise.all([loadOrders(), loadProducts()]);
+  await Promise.all([loadOrders(), loadProducts(), loadCategories()]);
 }
 
 loginForm.addEventListener("submit", async (event) => {
