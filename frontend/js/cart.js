@@ -23,10 +23,15 @@ export function getCart() {
   return read();
 }
 
-// Same cap in the same colour is one line with a bigger quantity.
-export function addToCart(product, colour, quantity = 1) {
+// One cart line per cap, colour and size.
+function sameLine(item, productId, colour, size) {
+  return item.productId === productId && item.colour === colour && (item.size || null) === (size || null);
+}
+
+// Same cap in the same colour and size is one line with a bigger quantity.
+export function addToCart(product, colour, quantity = 1, size = null) {
   const items = read();
-  const line = items.find((i) => i.productId === product.id && i.colour === colour);
+  const line = items.find((i) => sameLine(i, product.id, colour, size));
   if (line) {
     line.quantity += quantity;
   } else {
@@ -37,25 +42,26 @@ export function addToCart(product, colour, quantity = 1) {
       price: product.price,
       wholesalePrice: product.wholesalePrice,
       colour,
+      size,
       quantity,
     });
   }
   save(items);
 }
 
-export function setQuantity(productId, colour, quantity) {
+export function setQuantity(productId, colour, size, quantity) {
   let items = read();
   if (quantity <= 0) {
-    items = items.filter((i) => !(i.productId === productId && i.colour === colour));
+    items = items.filter((i) => !sameLine(i, productId, colour, size));
   } else {
-    const line = items.find((i) => i.productId === productId && i.colour === colour);
+    const line = items.find((i) => sameLine(i, productId, colour, size));
     if (line) line.quantity = quantity;
   }
   save(items);
 }
 
-export function removeFromCart(productId, colour) {
-  setQuantity(productId, colour, 0);
+export function removeFromCart(productId, colour, size) {
+  setQuantity(productId, colour, size, 0);
 }
 
 export function clearCart() {
