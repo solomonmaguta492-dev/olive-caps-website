@@ -450,6 +450,157 @@
       "stock": 40
     },
     {
+      "id": "p027",
+      "name": "Polo Classic Cap, Many Colours",
+      "category": "Baseball Caps",
+      "price": 1800,
+      "wholesalePrice": 1300,
+      "description": "Soft cotton chino cap with the embroidered pony. Curved brim and adjustable strap.",
+      "colours": [
+        "Black",
+        "Navy",
+        "Olive",
+        "Red",
+        "White",
+        "Cream",
+        "Khaki",
+        "Brown"
+      ],
+      "image": "images/baseball/polo-classic-colours.webp",
+      "stock": 40
+    },
+    {
+      "id": "p028",
+      "name": "Polo Classic Cap, White",
+      "category": "Baseball Caps",
+      "price": 1800,
+      "wholesalePrice": 1300,
+      "description": "Clean white chino cap with a multicolour pony. Adjustable strap.",
+      "colours": [
+        "White"
+      ],
+      "image": "images/baseball/polo-classic-white.webp",
+      "stock": 10
+    },
+    {
+      "id": "p029",
+      "name": "LA Dodgers Dad Cap",
+      "category": "Baseball Caps",
+      "price": 1500,
+      "wholesalePrice": 1100,
+      "description": "Low-profile cotton dad cap with a small embroidered LA logo. Adjustable strap.",
+      "colours": [
+        "Black",
+        "White",
+        "Navy",
+        "Grey",
+        "Olive",
+        "Yellow",
+        "Maroon",
+        "Teal",
+        "Sky Blue",
+        "Royal Blue"
+      ],
+      "image": "images/baseball/la-dad-caps.webp",
+      "stock": 50
+    },
+    {
+      "id": "p030",
+      "name": "Dad Cap Mix",
+      "category": "Baseball Caps",
+      "price": 1800,
+      "wholesalePrice": 1300,
+      "description": "Pick your favourite: Tommy Jeans black, NY tan, Aimé Leon Dore green, or Polo in navy, brown or grey.",
+      "colours": [
+        "Tommy Jeans Black",
+        "NY Tan",
+        "Aimé Leon Dore Green",
+        "Polo Navy",
+        "Polo Brown",
+        "Polo Grey"
+      ],
+      "image": "images/baseball/dad-cap-mix.webp",
+      "stock": 18
+    },
+    {
+      "id": "p031",
+      "name": "Everyday Dad Cap Mix",
+      "category": "Baseball Caps",
+      "price": 1600,
+      "wholesalePrice": 1200,
+      "description": "Six everyday styles: Polo brown or grey, LA tan, NY navy, 'The Sun Also Rises' charcoal and Adidas white.",
+      "colours": [
+        "Polo Brown",
+        "Polo Grey",
+        "LA Tan",
+        "NY Navy",
+        "The Sun Also Rises Charcoal",
+        "Adidas White"
+      ],
+      "image": "images/baseball/everyday-dad-cap-mix.webp",
+      "stock": 18
+    },
+    {
+      "id": "p032",
+      "name": "The North Face Distressed Cap, Navy",
+      "category": "Baseball Caps",
+      "price": 1700,
+      "wholesalePrice": 1250,
+      "description": "Washed navy cap with a beige embroidered logo and a frayed brim.",
+      "colours": [
+        "Navy"
+      ],
+      "image": "images/baseball/north-face-distressed-navy.webp",
+      "stock": 10
+    },
+    {
+      "id": "p033",
+      "name": "NY Yankees Washed Cap, Black",
+      "category": "Baseball Caps",
+      "price": 1600,
+      "wholesalePrice": 1200,
+      "description": "Washed black denim-look cap with a tonal raised NY logo.",
+      "colours": [
+        "Washed Black"
+      ],
+      "image": "images/baseball/ny-washed-black.webp",
+      "stock": 12
+    },
+    {
+      "id": "p034",
+      "name": "Ruthlessness Washed Cap, Black",
+      "category": "Baseball Caps",
+      "price": 1400,
+      "wholesalePrice": 1000,
+      "description": "Washed black cap with a white metal-style 'Ruthlessness' print.",
+      "colours": [
+        "Washed Black"
+      ],
+      "image": "images/baseball/ruthlessness-washed-black.webp",
+      "stock": 12
+    },
+    {
+      "id": "p035",
+      "name": "Streetwear Cap Collection",
+      "category": "Baseball Caps",
+      "price": 1700,
+      "wholesalePrice": 1250,
+      "description": "Nine streetwear designs: oval logo, distressed, corduroy, camo, racing and denim swirl. Choose your design.",
+      "colours": [
+        "Black Oval Logo",
+        "Pink Distressed",
+        "Grey Washed Slogan",
+        "Blue Corduroy",
+        "Liberté Tri-tone",
+        "Grey Washed Swirl",
+        "Camo Oval Logo",
+        "Navy Racing",
+        "Denim Swirl"
+      ],
+      "image": "images/baseball/streetwear-collection.webp",
+      "stock": 27
+    },
+    {
       "id": "p003",
       "name": "Mesh Trucker Hat",
       "category": "Trucker Hats",
