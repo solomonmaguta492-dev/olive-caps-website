@@ -4,6 +4,9 @@ import { formatKES, escapeHtml, applyShopSettings } from "./ui.js";
 
 const itemsBox = document.getElementById("cart-items");
 const checkoutSection = document.getElementById("checkout");
+const form = document.getElementById("checkout-form");
+const pickupFields = document.getElementById("pickup-fields");
+const deliveryFields = document.getElementById("delivery-fields");
 
 let settings = null;
 
@@ -57,11 +60,46 @@ function renderItems() {
   renderTotals();
 }
 
+function selectedMethod() {
+  return form.querySelector("input[name=method]:checked").value;
+}
+
+function currentDeliveryFee() {
+  if (!settings || selectedMethod() === "pickup") return 0;
+  const zone = settings.deliveryZones.find((z) => z.id === form.zoneId.value);
+  return zone ? zone.fee : 0;
+}
+
 function renderTotals() {
   const sub = subtotal(getCart());
+  const fee = currentDeliveryFee();
+  const deliveryText = selectedMethod() === "pickup" ? "Free pickup" : formatKES(fee);
   document.getElementById("sum-subtotal").textContent = formatKES(sub);
-  document.getElementById("sum-total").textContent = formatKES(sub);
+  document.getElementById("sum-delivery").textContent = deliveryText;
+  document.getElementById("sum-total").textContent = formatKES(sub + fee);
 }
+
+function fillDeliveryOptions() {
+  form.pickupPointId.innerHTML = settings.pickupPoints
+    .map((p) => `<option value="${p.id}">${escapeHtml(p.name)} (${escapeHtml(p.hours)})</option>`)
+    .join("");
+  form.zoneId.innerHTML = settings.deliveryZones
+    .map((z) => `<option value="${z.id}">${escapeHtml(z.name)}: ${formatKES(z.fee)}, ${escapeHtml(z.days)}</option>`)
+    .join("");
+}
+
+// Show only the fields for pickup or for delivery.
+function toggleMethod() {
+  const isPickup = selectedMethod() === "pickup";
+  pickupFields.classList.toggle("hidden", !isPickup);
+  deliveryFields.classList.toggle("hidden", isPickup);
+  renderTotals();
+}
+
+form.addEventListener("change", (event) => {
+  if (event.target.name === "method") toggleMethod();
+  if (event.target.name === "zoneId") renderTotals();
+});
 
 itemsBox.addEventListener("click", (event) => {
   const row = event.target.closest(".cart-item");
@@ -86,6 +124,8 @@ async function init() {
     settings = await getSettings();
     applyShopSettings(settings);
     document.getElementById("wholesale-min").textContent = settings.wholesale.minQuantity;
+    fillDeliveryOptions();
+    toggleMethod();
     renderItems();
   } catch {
     // The cart still works; checkout will show an error if the server is down.
