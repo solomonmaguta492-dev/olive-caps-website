@@ -60,7 +60,7 @@ function filteredOrders() {
 function orderRow(o) {
   const f = o.fulfilment;
   const place = f.method === "pickup" ? `Pickup: ${escapeHtml(f.pickupPoint)}` : `Delivery: ${escapeHtml(f.zone)}<br>${escapeHtml(f.town)}, ${escapeHtml(f.county)}<br>${escapeHtml(f.address)}`;
-  const items = o.items.map((i) => `${i.quantity} × ${escapeHtml(i.name)} (${escapeHtml(i.colour)})`).join("<br>");
+  const items = o.items.map((i) => `${i.quantity} × ${escapeHtml(i.name)} (${escapeHtml(i.colour)}${i.size ? `, size ${escapeHtml(i.size)}` : ""})`).join("<br>");
   const options = ORDER_STATUSES.map((s) => `<option value="${s}" ${s === o.status ? "selected" : ""}>${statusText(s)}</option>`).join("");
   const reference = o.payment.reference ? `<br>Ref: <strong>${escapeHtml(o.payment.reference)}</strong>` : "";
   const paidAt = o.payment.paidAt ? `<br>${formatDate(o.payment.paidAt)}` : "";
@@ -112,7 +112,7 @@ ordersBody.addEventListener("change", async (event) => {
 function productRow(p) {
   return `
     <tr data-id="${p.id}">
-      <td><strong>${escapeHtml(p.name)}</strong><br><small>${escapeHtml(p.colours.join(", "))}</small></td>
+      <td><strong>${escapeHtml(p.name)}</strong><br><small>${escapeHtml(p.colours.join(", "))}${p.sizes?.length ? `<br>Sizes: ${escapeHtml(p.sizes.join(", "))}` : ""}</small></td>
       <td>${escapeHtml(p.category)}</td>
       <td>${formatKES(p.price)}</td>
       <td>${p.wholesalePrice ? formatKES(p.wholesalePrice) : "-"}</td>
@@ -171,6 +171,8 @@ function editProduct(product) {
   productForm.wholesalePrice.value = product.wholesalePrice ?? "";
   productForm.stock.value = product.stock;
   productForm.colours.value = product.colours.join(", ");
+  productForm.sizes.value = (product.sizes || []).join(", ");
+  productForm.imageBack.value = product.imageBack || "";
   productForm.image.value = product.image;
   productForm.description.value = product.description;
   document.getElementById("product-form-title").textContent = `Edit ${product.name}`;
