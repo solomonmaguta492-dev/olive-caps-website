@@ -11,7 +11,7 @@ function itemsList() {
   return `
     <ul class="order-items">
       ${order.items
-        .map((i) => `<li><span>${i.quantity} × ${escapeHtml(i.name)} (${escapeHtml(i.colour)})</span><span>${formatKES(i.lineTotal)}</span></li>`)
+        .map((i) => `<li><span>${i.quantity} × ${escapeHtml(i.name)} (${escapeHtml(i.colour)}${i.size ? `, size ${escapeHtml(i.size)}` : ""})</span><span>${formatKES(i.lineTotal)}</span></li>`)
         .join("")}
     </ul>
     <div class="summary-row"><span>Subtotal</span><span>${formatKES(order.subtotal)}</span></div>
