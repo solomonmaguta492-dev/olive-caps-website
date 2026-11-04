@@ -120,6 +120,15 @@ h3 {
   background: var(--olive-light);
 }
 
+.btn-accent {
+  background: var(--mustard);
+  color: var(--ink);
+}
+
+.btn-accent:hover {
+  background: #b38f1f;
+}
+
 .btn-whatsapp {
   background: var(--whatsapp);
   color: #0b3d1e;
