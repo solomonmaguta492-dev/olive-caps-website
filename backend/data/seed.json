@@ -601,35 +601,6 @@
       "stock": 40
     },
     {
-      "id": "p003",
-      "name": "Mesh Trucker Hat",
-      "category": "Trucker Hats",
-      "price": 1000,
-      "wholesalePrice": 720,
-      "description": "Foam front with breathable mesh back and snap closure. Cool in the Nairobi heat.",
-      "colours": [
-        "White/Olive",
-        "Black/Black",
-        "Navy/White"
-      ],
-      "image": "images/trucker-hat.svg",
-      "stock": 18
-    },
-    {
-      "id": "p004",
-      "name": "Retro Trucker Hat",
-      "category": "Trucker Hats",
-      "price": 1100,
-      "wholesalePrice": 800,
-      "description": "High-crown trucker with a contrast panel and mesh back.",
-      "colours": [
-        "Red/White",
-        "Green/White"
-      ],
-      "image": "images/trucker-hat.svg",
-      "stock": 4
-    },
-    {
       "id": "p005",
       "name": "Flat Brim Snapback",
       "category": "Snapbacks",
@@ -716,6 +687,177 @@
       ],
       "image": "images/bucket-hat.svg",
       "stock": 3
+    },
+    {
+      "id": "p036",
+      "name": "Feature Lightning Trucker, Brights",
+      "category": "Trucker Hats",
+      "price": 1500,
+      "wholesalePrice": 1100,
+      "description": "Foam-front trucker with the Feature lightning logo, mesh back and snap closure.",
+      "colours": [
+        "Black",
+        "Purple",
+        "Orange",
+        "Teal",
+        "Red"
+      ],
+      "image": "images/trucker/feature-lightning-brights.webp",
+      "stock": 25
+    },
+    {
+      "id": "p037",
+      "name": "Feature Lightning Trucker, Earth Tones",
+      "category": "Trucker Hats",
+      "price": 1500,
+      "wholesalePrice": 1100,
+      "description": "Feature lightning logo on black, burgundy or brown. Mesh back, snap closure.",
+      "colours": [
+        "Black",
+        "Burgundy",
+        "Brown"
+      ],
+      "image": "images/trucker/feature-lightning-earth-tones.webp",
+      "stock": 15
+    },
+    {
+      "id": "p038",
+      "name": "Feature Lightning Trucker, Black & Teal",
+      "category": "Trucker Hats",
+      "price": 1500,
+      "wholesalePrice": 1100,
+      "description": "Feature lightning logo with a rope detail on the brim. Black or teal.",
+      "colours": [
+        "Black",
+        "Teal"
+      ],
+      "image": "images/trucker/feature-lightning-black-teal.webp",
+      "stock": 10
+    },
+    {
+      "id": "p039",
+      "name": "Feature Lightning Trucker, White & Black",
+      "category": "Trucker Hats",
+      "price": 1500,
+      "wholesalePrice": 1100,
+      "description": "White foam front, black brim and mesh, black Feature lightning logo.",
+      "colours": [
+        "White/Black"
+      ],
+      "image": "images/trucker/feature-lightning-white-black.webp",
+      "stock": 8
+    },
+    {
+      "id": "p040",
+      "name": "Feature Script Trucker",
+      "category": "Trucker Hats",
+      "price": 1500,
+      "wholesalePrice": 1100,
+      "description": "Feature script logo on a white or cream foam front with a coloured brim and mesh.",
+      "colours": [
+        "Black/White",
+        "Brown/Cream",
+        "Red/White",
+        "Navy/White",
+        "Green"
+      ],
+      "image": "images/trucker/feature-script-trucker.webp",
+      "stock": 20
+    },
+    {
+      "id": "p041",
+      "name": "Cactus & Drew Print Trucker",
+      "category": "Trucker Hats",
+      "price": 1300,
+      "wholesalePrice": 950,
+      "description": "Fun printed truckers: green cactus or sky blue smiley cup. Mesh back, snap closure.",
+      "colours": [
+        "Cactus Green",
+        "Drew Sky Blue"
+      ],
+      "image": "images/trucker/cactus-drew-trucker.webp",
+      "stock": 12
+    },
+    {
+      "id": "p042",
+      "name": "Bear Print Trucker, Black",
+      "category": "Trucker Hats",
+      "price": 1200,
+      "wholesalePrice": 850,
+      "description": "All-black trucker with a white outline bear print.",
+      "colours": [
+        "Black"
+      ],
+      "image": "images/trucker/bear-print-trucker-black.webp",
+      "stock": 15
+    },
+    {
+      "id": "p043",
+      "name": "DTA Trucker, Red",
+      "category": "Trucker Hats",
+      "price": 1600,
+      "wholesalePrice": 1200,
+      "description": "Red and white trucker with a raised red DTA gothic logo.",
+      "colours": [
+        "Red/White"
+      ],
+      "image": "images/trucker/dta-trucker-red.webp",
+      "stock": 8
+    },
+    {
+      "id": "p044",
+      "name": "The North Face Half Dome Trucker",
+      "category": "Trucker Hats",
+      "price": 1900,
+      "wholesalePrice": 1400,
+      "description": "White front with a Half Dome patch, olive brim and camo mesh back.",
+      "colours": [
+        "White/Camo"
+      ],
+      "image": "images/trucker/north-face-half-dome-trucker.webp",
+      "stock": 6
+    },
+    {
+      "id": "p045",
+      "name": "Plain Trucker, White & Black",
+      "category": "Trucker Hats",
+      "price": 900,
+      "wholesalePrice": 600,
+      "description": "Blank foam-front trucker. Ready for your own print or logo; great for bulk orders.",
+      "colours": [
+        "White/Black"
+      ],
+      "image": "images/trucker/plain-trucker-white-black.webp",
+      "stock": 40
+    },
+    {
+      "id": "p003",
+      "name": "Mesh Trucker Hat",
+      "category": "Trucker Hats",
+      "price": 1000,
+      "wholesalePrice": 720,
+      "description": "Foam front with breathable mesh back and snap closure. Cool in the Nairobi heat.",
+      "colours": [
+        "White/Olive",
+        "Black/Black",
+        "Navy/White"
+      ],
+      "image": "images/trucker-hat.svg",
+      "stock": 18
+    },
+    {
+      "id": "p004",
+      "name": "Retro Trucker Hat",
+      "category": "Trucker Hats",
+      "price": 1100,
+      "wholesalePrice": 800,
+      "description": "High-crown trucker with a contrast panel and mesh back.",
+      "colours": [
+        "Red/White",
+        "Green/White"
+      ],
+      "image": "images/trucker-hat.svg",
+      "stock": 4
     }
   ],
   "orders": []
