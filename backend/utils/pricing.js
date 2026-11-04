@@ -31,12 +31,18 @@ export function priceOrder(items, products, settings, fulfilment) {
     if (item.colour && !product.colours.includes(item.colour)) {
       throw new Error(`${item.colour} is not available for ${product.name}`);
     }
+    // Fitted caps must have a size chosen; other caps have no sizes.
+    const sizes = product.sizes || [];
+    if (sizes.length && !sizes.includes(item.size)) {
+      throw new Error(`Please choose a size for ${product.name}`);
+    }
 
     const price = unitPrice(product, quantity, settings.wholesale);
     return {
       productId: product.id,
       name: product.name,
       colour: item.colour || product.colours[0],
+      size: sizes.length ? item.size : null,
       quantity,
       unitPrice: price,
       wholesale: price !== product.price,
