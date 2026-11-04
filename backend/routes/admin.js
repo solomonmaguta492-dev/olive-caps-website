@@ -36,9 +36,12 @@ function productFromBody(body, categories) {
   const price = Number(body.price);
   const stock = Number.parseInt(body.stock, 10);
   const wholesalePrice = body.wholesalePrice === "" || body.wholesalePrice == null ? null : Number(body.wholesalePrice);
-  const colours = (Array.isArray(body.colours) ? body.colours : String(body.colours || "").split(","))
-    .map((c) => c.trim())
-    .filter(Boolean);
+  const toList = (value) =>
+    (Array.isArray(value) ? value : String(value || "").split(","))
+      .map((v) => String(v).trim())
+      .filter(Boolean);
+  const colours = toList(body.colours);
+  const sizes = toList(body.sizes);
 
   if (!name) throw new Error("Name is required");
   if (!categories.includes(body.category)) throw new Error("Choose a valid category");
@@ -55,6 +58,8 @@ function productFromBody(body, categories) {
     wholesalePrice,
     description: String(body.description || "").trim(),
     colours: colours.length ? colours : ["One colour"],
+    sizes,
+    imageBack: String(body.imageBack || "").trim() || undefined,
     image: String(body.image || "images/baseball-cap.svg").trim(),
     stock,
     active: body.active !== false,
