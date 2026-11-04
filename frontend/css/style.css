@@ -381,6 +381,24 @@ h3 {
   background: var(--olive-light);
 }
 
+.card-image {
+  position: relative;
+}
+
+.view-toggle {
+  position: absolute;
+  right: 0.6rem;
+  bottom: 0.6rem;
+  padding: 0.3rem 0.7rem;
+  border: none;
+  border-radius: 999px;
+  background: rgba(31, 36, 22, 0.75);
+  color: var(--white);
+  font: inherit;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
 .product-body {
   display: flex;
   flex-direction: column;
