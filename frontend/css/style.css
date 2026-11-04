@@ -957,3 +957,97 @@ legend {
   height: 32px;
   fill: var(--white);
 }
+
+/* Admin dashboard */
+.admin-login {
+  max-width: 380px;
+  margin: 4rem auto;
+}
+
+.admin-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.8rem;
+  margin-bottom: 1.2rem;
+}
+
+.stat {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 1rem;
+  box-shadow: var(--shadow);
+}
+
+.stat span {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.stat strong {
+  font-size: 1.4rem;
+}
+
+.table-wrap {
+  overflow-x: auto;
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  min-width: 760px;
+}
+
+.data-table th,
+.data-table td {
+  padding: 0.7rem;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+
+.data-table th {
+  background: var(--olive-light);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.data-table select,
+.data-table input {
+  padding: 0.35rem;
+  border: 1.5px solid var(--line);
+  border-radius: 6px;
+  font: inherit;
+}
+
+.data-table input[type="number"] {
+  width: 80px;
+}
+
+.admin-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.admin-toolbar select,
+.admin-toolbar input {
+  min-height: 40px;
+  padding: 0.4rem 0.7rem;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-sm);
+  font: inherit;
+}
