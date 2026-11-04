@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="Snapback cap">
+  <rect width="400" height="300" fill="#ebebe6"/>
+  <ellipse cx="200" cy="236" rx="160" ry="13" fill="#d6d6cf"/>
+  <path d="M100 195 L100 120 C100 85 150 62 200 62 C255 62 300 85 300 120 L300 195 Z" fill="#26261f"/>
+  <path d="M200 62 L200 195" stroke="#3a3a31" stroke-width="4"/>
+  <path d="M150 70 L145 195 M250 70 L255 195" stroke="#3a3a31" stroke-width="3"/>
+  <rect x="60" y="192" width="280" height="22" rx="4" fill="#3a3a31"/>
+  <rect x="60" y="208" width="280" height="6" fill="#556b2f"/>
+  <circle cx="200" cy="64" r="7" fill="#3a3a31"/>
+</svg>
