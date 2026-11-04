@@ -745,3 +745,79 @@ legend {
   font-size: 0.85rem;
   color: var(--muted);
 }
+
+/* Order and payment page */
+.status-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: capitalize;
+  background: var(--olive-light);
+  color: var(--olive-deep);
+}
+
+.status-paid,
+.status-completed {
+  background: #e8f5e9;
+  color: var(--success);
+}
+
+.status-pending,
+.status-unpaid,
+.status-awaiting_payment {
+  background: #fff4dc;
+  color: var(--warning);
+}
+
+.status-failed,
+.status-underpaid,
+.status-cancelled {
+  background: #fdecea;
+  color: var(--danger);
+}
+
+.pay-box {
+  text-align: center;
+}
+
+.pay-box .amount {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--olive-deep);
+  margin: 0.3rem 0 1rem;
+}
+
+.mpesa-steps {
+  text-align: left;
+  padding-left: 1.2rem;
+  color: var(--muted);
+}
+
+.success-icon {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
+  background: var(--success);
+  color: var(--white);
+  font-size: 2.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.order-items {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem;
+}
+
+.order-items li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--line);
+}
