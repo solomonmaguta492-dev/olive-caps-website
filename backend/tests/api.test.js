@@ -171,3 +171,9 @@ test("Trucker Hats category includes the new Feature and print truckers", async 
   const ids = caps.map((p) => p.id);
   for (let n = 36; n <= 45; n++) assert.ok(ids.includes(`p0${n}`));
 });
+
+test("Beanies category includes the 13 new beanies", async () => {
+  const caps = await (await fetch(`${base}/api/products?category=Beanies`)).json();
+  const ids = caps.map((p) => p.id);
+  for (let n = 46; n <= 58; n++) assert.ok(ids.includes(`p0${n}`));
+});
