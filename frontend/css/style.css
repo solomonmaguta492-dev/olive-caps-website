@@ -473,7 +473,11 @@ h3 {
 }
 
 .card-options.has-sizes {
-  grid-template-columns: 1fr 1fr 64px;
+  grid-template-columns: 1fr 72px;
+}
+
+.card-options.has-sizes [data-colour] {
+  grid-column: 1 / -1;
 }
 
 .card-options select,
