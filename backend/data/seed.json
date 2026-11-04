@@ -1018,6 +1018,138 @@
       "stock": 12
     },
     {
+      "id": "p059",
+      "name": "Jordan Bucket Hat, Black",
+      "category": "Bucket Hats",
+      "price": 2200,
+      "wholesalePrice": 1700,
+      "description": "Black ripstop bucket hat with the Jumpman logo, a webbing band and a branded chin strap.",
+      "colours": [
+        "Black"
+      ],
+      "image": "images/bucket/jordan-bucket-black.webp",
+      "stock": 12,
+      "imageBack": "images/bucket/jordan-bucket-black-pair.webp",
+      "imageBackLabel": "More photos"
+    },
+    {
+      "id": "p060",
+      "name": "Nike Ripstop Bucket Hat, Khaki",
+      "category": "Bucket Hats",
+      "price": 2000,
+      "wholesalePrice": 1500,
+      "description": "Light khaki ripstop bucket hat with a white swoosh and a webbing band.",
+      "colours": [
+        "Khaki"
+      ],
+      "image": "images/bucket/nike-ripstop-bucket-khaki.webp",
+      "stock": 10
+    },
+    {
+      "id": "p061",
+      "name": "Nike Camo Boonie Hat",
+      "category": "Bucket Hats",
+      "price": 2200,
+      "wholesalePrice": 1700,
+      "description": "Woodland camo boonie with a white swoosh, black trim and a chin strap.",
+      "colours": [
+        "Woodland Camo"
+      ],
+      "image": "images/bucket/nike-camo-boonie.webp",
+      "stock": 8
+    },
+    {
+      "id": "p062",
+      "name": "New Era Camo Boonie Hat",
+      "category": "Bucket Hats",
+      "price": 2400,
+      "wholesalePrice": 1800,
+      "description": "Camo boonie with vent eyelets, loop band and a drawcord.",
+      "colours": [
+        "Woodland Camo"
+      ],
+      "image": "images/bucket/new-era-camo-boonie.webp",
+      "stock": 6
+    },
+    {
+      "id": "p063",
+      "name": "The North Face Brimmer Hat, Khaki",
+      "category": "Bucket Hats",
+      "price": 2300,
+      "wholesalePrice": 1750,
+      "description": "Wide-brim hiking hat with sun protection and an adjustable chin cord.",
+      "colours": [
+        "Khaki"
+      ],
+      "image": "images/bucket/north-face-brimmer-khaki.webp",
+      "stock": 8
+    },
+    {
+      "id": "p064",
+      "name": "The North Face Camo Bucket Hat",
+      "category": "Bucket Hats",
+      "price": 2300,
+      "wholesalePrice": 1750,
+      "description": "Earthy camo bucket hat with a logo band and chin cord.",
+      "colours": [
+        "Earth Camo"
+      ],
+      "image": "images/bucket/north-face-camo-bucket.webp",
+      "stock": 6
+    },
+    {
+      "id": "p065",
+      "name": "Classic Boonie Hat, Khaki",
+      "category": "Bucket Hats",
+      "price": 1200,
+      "wholesalePrice": 850,
+      "description": "Wide-brim cotton boonie with vent eyelets, loop band and an adjustable chin strap. Great for sun and outdoors.",
+      "colours": [
+        "Khaki"
+      ],
+      "image": "images/bucket/boonie-hat-khaki.webp",
+      "stock": 25
+    },
+    {
+      "id": "p066",
+      "name": "Trident Boonie Hat, Coyote Brown",
+      "category": "Bucket Hats",
+      "price": 1500,
+      "wholesalePrice": 1100,
+      "description": "Ripstop boonie with an embroidered trident logo and a chin strap.",
+      "colours": [
+        "Coyote Brown"
+      ],
+      "image": "images/bucket/trident-boonie-coyote.webp",
+      "stock": 10
+    },
+    {
+      "id": "p067",
+      "name": "Wide Brim Outdoor Hat, Black",
+      "category": "Bucket Hats",
+      "price": 1300,
+      "wholesalePrice": 950,
+      "description": "Lightweight black wide-brim hat with snap sides, vent eyelets and a drawcord.",
+      "colours": [
+        "Black"
+      ],
+      "image": "images/bucket/wide-brim-outdoor-black.webp",
+      "stock": 15
+    },
+    {
+      "id": "p068",
+      "name": "Boonie Hat with Face Cover, Black",
+      "category": "Bucket Hats",
+      "price": 1400,
+      "wholesalePrice": 1000,
+      "description": "Black boonie hat with an attached face and neck cover for sun, dust and motorbike rides.",
+      "colours": [
+        "Black"
+      ],
+      "image": "images/bucket/boonie-face-cover-black.webp",
+      "stock": 15
+    },
+    {
       "id": "p009",
       "name": "Cotton Bucket Hat",
       "category": "Bucket Hats",
