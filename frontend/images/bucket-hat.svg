@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="Bucket hat">
+  <rect width="400" height="300" fill="#efece2"/>
+  <ellipse cx="200" cy="240" rx="155" ry="13" fill="#dcd7c6"/>
+  <path d="M130 175 L145 90 C150 72 250 72 255 90 L270 175 Z" fill="#8a7f55"/>
+  <path d="M60 205 C80 170 130 165 200 165 C270 165 320 170 340 205 C300 222 100 222 60 205 Z" fill="#766c45"/>
+  <path d="M140 150 C175 158 225 158 260 150" stroke="#5f5636" stroke-width="5" fill="none"/>
+  <g stroke="#5f5636" stroke-width="2" stroke-dasharray="6 5" fill="none">
+    <path d="M75 203 C120 214 280 214 325 203"/>
+  </g>
+</svg>
