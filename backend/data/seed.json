@@ -421,35 +421,6 @@
       ]
     },
     {
-      "id": "p001",
-      "name": "Classic Olive Baseball Cap",
-      "category": "Baseball Caps",
-      "price": 900,
-      "wholesalePrice": 650,
-      "description": "Cotton twill cap with a curved brim and adjustable strap. Our signature colour.",
-      "colours": [
-        "Olive",
-        "Black",
-        "Beige"
-      ],
-      "image": "images/baseball-cap.svg",
-      "stock": 25
-    },
-    {
-      "id": "p002",
-      "name": "Everyday Black Baseball Cap",
-      "category": "Baseball Caps",
-      "price": 850,
-      "wholesalePrice": 600,
-      "description": "Plain black cap that goes with everything. Breathable cotton, one size fits most.",
-      "colours": [
-        "Black",
-        "Navy"
-      ],
-      "image": "images/baseball-cap.svg",
-      "stock": 40
-    },
-    {
       "id": "p027",
       "name": "Polo Classic Cap, Many Colours",
       "category": "Baseball Caps",
@@ -599,6 +570,35 @@
       ],
       "image": "images/baseball/streetwear-collection.webp",
       "stock": 27
+    },
+    {
+      "id": "p001",
+      "name": "Classic Olive Baseball Cap",
+      "category": "Baseball Caps",
+      "price": 900,
+      "wholesalePrice": 650,
+      "description": "Cotton twill cap with a curved brim and adjustable strap. Our signature colour.",
+      "colours": [
+        "Olive",
+        "Black",
+        "Beige"
+      ],
+      "image": "images/baseball-cap.svg",
+      "stock": 25
+    },
+    {
+      "id": "p002",
+      "name": "Everyday Black Baseball Cap",
+      "category": "Baseball Caps",
+      "price": 850,
+      "wholesalePrice": 600,
+      "description": "Plain black cap that goes with everything. Breathable cotton, one size fits most.",
+      "colours": [
+        "Black",
+        "Navy"
+      ],
+      "image": "images/baseball-cap.svg",
+      "stock": 40
     },
     {
       "id": "p003",
