@@ -41,7 +41,11 @@ function productCard(product) {
 
   return `
     <article class="product-card ${soldOut ? "sold-out" : ""}" data-id="${product.id}">
-      <img src="${escapeHtml(product.image)}" alt="${escapeHtml(product.name)}" loading="lazy" width="400" height="300">
+      <div class="card-image">
+        <img src="${escapeHtml(product.image)}" alt="${escapeHtml(product.name)}" loading="lazy" width="400" height="300"
+          ${product.imageBack ? `data-front="${escapeHtml(product.image)}" data-back="${escapeHtml(product.imageBack)}"` : ""}>
+        ${product.imageBack ? `<button type="button" class="view-toggle" data-flip>Back view</button>` : ""}
+      </div>
       <div class="product-body">
         <span class="product-category">${escapeHtml(product.category)}</span>
         <h3 class="product-name">${escapeHtml(product.name)}</h3>
@@ -118,6 +122,16 @@ searchInput.addEventListener("input", () => {
     state.search = searchInput.value;
     update();
   }, 200);
+});
+
+// Switches between front and back photos when a cap has both.
+grid.addEventListener("click", (event) => {
+  const flip = event.target.closest("[data-flip]");
+  if (!flip) return;
+  const img = flip.parentElement.querySelector("img");
+  const showingBack = img.src.endsWith(img.dataset.back);
+  img.src = showingBack ? img.dataset.front : img.dataset.back;
+  flip.textContent = showingBack ? "Back view" : "Front view";
 });
 
 grid.addEventListener("click", (event) => {
