@@ -1158,6 +1158,7 @@ legend {
   }
 
   .card-options,
+  .card-options.has-sizes,
   .card-actions {
     grid-template-columns: 1fr;
   }
