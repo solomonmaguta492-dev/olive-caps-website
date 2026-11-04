@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="Baseball cap">
+  <rect width="400" height="300" fill="#eef0e4"/>
+  <ellipse cx="200" cy="232" rx="150" ry="14" fill="#d8dcc6"/>
+  <path d="M95 190 C95 110 150 70 205 70 C265 70 310 115 310 190 Z" fill="#556b2f"/>
+  <path d="M205 70 C190 100 185 150 190 190" stroke="#46592a" stroke-width="4" fill="none"/>
+  <path d="M205 70 C235 100 250 150 255 190" stroke="#46592a" stroke-width="4" fill="none"/>
+  <path d="M300 185 C345 185 375 200 380 215 C340 222 300 214 285 205 Z" fill="#46592a"/>
+  <rect x="95" y="182" width="215" height="14" rx="6" fill="#46592a"/>
+  <circle cx="205" cy="72" r="7" fill="#46592a"/>
+</svg>
