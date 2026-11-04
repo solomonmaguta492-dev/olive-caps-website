@@ -31,15 +31,16 @@ function showDashboard(show) {
 }
 
 function formatDate(iso) {
-  return iso ? new Date(iso).toLocaleString("en-KE", { dateStyle: "medium", timeStyle: "short" }) : "";
+  return iso ? new Date(iso).toLocaleString("en-KE", { dateStyle: "medium", timeStyle: "short", timeZone: "Africa/Nairobi" }) : "";
 }
 
 function renderStats() {
   const paid = orders.filter((o) => o.payment.status === "paid");
   const revenue = paid.reduce((sum, o) => sum + o.payment.amountReceived, 0);
   const toPrepare = orders.filter((o) => o.status === "processing").length;
-  const today = new Date().toDateString();
-  const todayCount = orders.filter((o) => new Date(o.createdAt).toDateString() === today).length;
+  const kenyaDay = (d) => new Date(d).toLocaleDateString("en-CA", { timeZone: "Africa/Nairobi" });
+  const today = kenyaDay(Date.now());
+  const todayCount = orders.filter((o) => kenyaDay(o.createdAt) === today).length;
 
   statsBox.innerHTML = `
     <div class="stat"><span>Orders today</span><strong>${todayCount}</strong></div>
