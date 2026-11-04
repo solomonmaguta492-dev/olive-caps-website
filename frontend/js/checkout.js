@@ -43,11 +43,11 @@ function renderItems() {
       const price = linePrice(item);
       const wholesaleNote = price !== item.price ? " · wholesale price" : "";
       return `
-        <div class="cart-item" data-id="${item.productId}" data-colour="${escapeHtml(item.colour)}">
+        <div class="cart-item" data-id="${item.productId}" data-colour="${escapeHtml(item.colour)}" data-size="${escapeHtml(item.size || "")}">
           <img src="${escapeHtml(item.image)}" alt="">
           <div>
             <h3>${escapeHtml(item.name)}</h3>
-            <div class="meta">${escapeHtml(item.colour)} · ${formatKES(price)} each${wholesaleNote}</div>
+            <div class="meta">${escapeHtml(item.colour)}${item.size ? ` · Size ${escapeHtml(item.size)}` : ""} · ${formatKES(price)} each${wholesaleNote}</div>
             <div class="qty-control">
               <button type="button" data-step="-1" aria-label="Fewer">−</button>
               <span>${item.quantity}</span>
@@ -76,7 +76,7 @@ function currentDeliveryFee() {
 function updateWhatsappOrderLink() {
   const items = getCart();
   if (!settings || items.length === 0) return;
-  const lines = items.map((i) => `- ${i.quantity} x ${i.name} (${i.colour})`).join("\n");
+  const lines = items.map((i) => `- ${i.quantity} x ${i.name} (${i.colour}${i.size ? `, size ${i.size}` : ""})`).join("\n");
   const message = `Hi Olive Caps, I'd like to order:\n${lines}\nSubtotal: ${formatKES(subtotal(items))}`;
   document.querySelectorAll("#checkout [data-whatsapp]").forEach((a) => {
     a.href = whatsappLink(message, settings.whatsappNumber);
@@ -119,13 +119,14 @@ itemsBox.addEventListener("click", (event) => {
   const row = event.target.closest(".cart-item");
   if (!row) return;
   const { id, colour } = row.dataset;
-  const item = getCart().find((i) => i.productId === id && i.colour === colour);
+  const size = row.dataset.size || null;
+  const item = getCart().find((i) => i.productId === id && i.colour === colour && (i.size || null) === size);
 
   if (event.target.closest("[data-remove]")) {
-    removeFromCart(id, colour);
+    removeFromCart(id, colour, size);
   } else if (event.target.closest("[data-step]")) {
     const step = Number(event.target.closest("[data-step]").dataset.step);
-    setQuantity(id, colour, item.quantity + step);
+    setQuantity(id, colour, size, item.quantity + step);
   } else {
     return;
   }
@@ -173,7 +174,7 @@ function buildOrder() {
 
   return {
     customer: { name: form.name.value, phone: form.phone.value, email: form.email.value },
-    items: getCart().map(({ productId, colour, quantity }) => ({ productId, colour, quantity })),
+    items: getCart().map(({ productId, colour, size, quantity }) => ({ productId, colour, size, quantity })),
     fulfilment,
     notes: form.notes.value,
   };
