@@ -734,6 +734,14 @@ legend {
   display: none !important;
 }
 
+.mt {
+  margin-top: 1rem;
+}
+
+.mt-lg {
+  margin-top: 1.5rem;
+}
+
 /* Order summary */
 .summary-row {
   display: flex;
