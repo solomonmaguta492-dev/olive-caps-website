@@ -44,7 +44,7 @@ function productCard(product) {
       <div class="card-image">
         <img src="${escapeHtml(product.image)}" alt="${escapeHtml(product.name)}" loading="lazy" width="400" height="300"
           ${product.imageBack ? `data-front="${escapeHtml(product.image)}" data-back="${escapeHtml(product.imageBack)}"` : ""}>
-        ${product.imageBack ? `<button type="button" class="view-toggle" data-flip>Back view</button>` : ""}
+        ${product.imageBack ? `<button type="button" class="view-toggle" data-flip data-label="${escapeHtml(product.imageBackLabel || "Back view")}">${escapeHtml(product.imageBackLabel || "Back view")}</button>` : ""}
       </div>
       <div class="product-body">
         <span class="product-category">${escapeHtml(product.category)}</span>
@@ -131,7 +131,8 @@ grid.addEventListener("click", (event) => {
   const img = flip.parentElement.querySelector("img");
   const showingBack = img.src.endsWith(img.dataset.back);
   img.src = showingBack ? img.dataset.front : img.dataset.back;
-  flip.textContent = showingBack ? "Back view" : "Front view";
+  const backLabel = flip.dataset.label;
+  flip.textContent = showingBack ? backLabel : backLabel === "Back view" ? "Front view" : "Main photo";
 });
 
 grid.addEventListener("click", (event) => {
