@@ -1,0 +1,76 @@
+/* Olive Caps: colours, fonts and spacing */
+:root {
+  --olive: #556b2f;
+  --olive-dark: #3d4d21;
+  --olive-deep: #2a3517;
+  --olive-light: #eef0e4;
+  --cream: #f8f6ef;
+  --mustard: #c9a227;
+  --ink: #1f2416;
+  --muted: #5f6655;
+  --line: #dfe2d3;
+  --white: #ffffff;
+  --danger: #b3261e;
+  --success: #2e7d32;
+  --warning: #a86b00;
+  --whatsapp: #25d366;
+  --radius: 14px;
+  --radius-sm: 8px;
+  --shadow: 0 6px 20px rgba(31, 36, 22, 0.08);
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, sans-serif;
+  --max: 1150px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--ink);
+  background: var(--cream);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: var(--olive-dark);
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+  margin: 0 0 0.5em;
+}
+
+.container {
+  width: min(100% - 2rem, var(--max));
+  margin-inline: auto;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+:focus-visible {
+  outline: 3px solid var(--mustard);
+  outline-offset: 2px;
+}
