@@ -5,7 +5,7 @@ Customers can shop on the website and pay with **M-Pesa**, or order directly on 
 
 ## Features
 
-- Product catalogue with categories, search, prices, descriptions, colours and stock availability
+- Product catalogue with categories (including **New Era**), search, prices, descriptions, colours, sizes for fitted caps and stock availability
 - Cart that survives a page refresh (localStorage)
 - Checkout that collects customer, order and delivery/pickup details
 - Delivery fees by zone, or free pickup at a pickup point
@@ -89,7 +89,8 @@ An order is marked **paid only when Safaricom's callback confirms it**, and stoc
 ## Things to edit before launch
 
 - `backend/data/seed.json`: your real products, prices, stock, delivery zones, pickup points, WhatsApp number and wholesale rules. Fees and numbers in the file are placeholders.
-- `frontend/images/`: replace the illustrations with real product photos (WebP, around 800px wide).
+- `frontend/images/`: replace the illustrations with real product photos (WebP, around 800px wide). New Era photos live in `frontend/images/new-era/`.
+- New Era prices in `seed.json` are placeholders too: set your real retail and wholesale prices.
 - `.env`: a strong `ADMIN_PASSWORD` and your Daraja credentials.
 
 ## Deployment
