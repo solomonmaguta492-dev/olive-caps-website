@@ -157,3 +157,9 @@ test("New Era category lists the new caps", async () => {
   const caps = await (await fetch(`${base}/api/products?category=New%20Era`)).json();
   assert.equal(caps.length, 16);
 });
+
+test("Baseball Caps category includes the new caps without sizes", async () => {
+  const caps = await (await fetch(`${base}/api/products?category=Baseball%20Caps`)).json();
+  assert.equal(caps.length, 11);
+  assert.ok(caps.every((p) => !p.sizes || p.sizes.length === 0));
+});
