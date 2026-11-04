@@ -9,6 +9,7 @@ const settings = {
 const products = [
   { id: "p1", name: "Cap", price: 900, wholesalePrice: 650, colours: ["Olive", "Black"], stock: 20 },
   { id: "p2", name: "Beanie", price: 700, wholesalePrice: null, colours: ["Grey"], stock: 2 },
+  { id: "p3", name: "Fitted", price: 3500, wholesalePrice: 2800, colours: ["Black"], sizes: ["7", "7 1/4"], stock: 5 },
 ];
 
 test("uses retail price below the wholesale minimum", () => {
@@ -75,4 +76,17 @@ test("normalises Kenyan phone numbers", () => {
   assert.equal(normalisePhone("0112345678"), "254112345678");
   assert.equal(normalisePhone("712345678"), "254712345678");
   assert.equal(normalisePhone("12345"), null);
+});
+
+test("fitted caps need a valid size", () => {
+  const pickup = { method: "pickup" };
+  assert.throws(() => priceOrder([{ productId: "p3", colour: "Black", quantity: 1 }], products, settings, pickup), /size/);
+  assert.throws(() => priceOrder([{ productId: "p3", colour: "Black", size: "9", quantity: 1 }], products, settings, pickup));
+  const ok = priceOrder([{ productId: "p3", colour: "Black", size: "7 1/4", quantity: 1 }], products, settings, pickup);
+  assert.equal(ok.lines[0].size, "7 1/4");
+});
+
+test("caps without sizes save no size", () => {
+  const result = priceOrder([{ productId: "p1", colour: "Olive", size: "7", quantity: 1 }], products, settings, { method: "pickup" });
+  assert.equal(result.lines[0].size, null);
 });
