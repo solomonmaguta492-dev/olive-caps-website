@@ -454,6 +454,10 @@ h3 {
   gap: 0.5rem;
 }
 
+.card-options.has-sizes {
+  grid-template-columns: 1fr 1fr 64px;
+}
+
 .card-options select,
 .card-options input {
   width: 100%;
