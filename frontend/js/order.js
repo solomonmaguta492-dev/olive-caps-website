@@ -1,4 +1,4 @@
-import { getOrder, getSettings, startMpesaPayment } from "./api.js";
+import { getOrder, getSettings, startMpesaPayment, getHealth } from "./api.js";
 import { formatKES, escapeHtml, applyShopSettings, statusText } from "./ui.js";
 
 const view = document.getElementById("order-view");
@@ -6,6 +6,14 @@ const orderNumber = new URLSearchParams(window.location.search).get("no");
 
 let order = null;
 let pollTimer = null;
+let testMode = false;
+
+// Warns that no real prompt is sent while M-Pesa is in mock (test) mode.
+function testModeNotice() {
+  return testMode
+    ? `<p class="notice">Test mode: no M-Pesa prompt is sent to your phone. The payment is approved automatically in a few seconds.</p>`
+    : "";
+}
 
 function itemsList() {
   return `
@@ -38,6 +46,7 @@ function payForm(message = "") {
     <section class="panel pay-box">
       <h2>Pay with M-Pesa</h2>
       <div class="amount">${formatKES(order.total)}</div>
+      ${testModeNotice()}
       ${message}
       <form id="pay-form" class="form-grid">
         <div class="field">
@@ -60,8 +69,9 @@ function waiting() {
   return `
     <section class="panel pay-box" aria-live="polite">
       <div class="spinner"></div>
-      <h2>Check your phone</h2>
-      <p>Enter your M-Pesa PIN to pay <strong>${formatKES(order.total)}</strong>. We're waiting for confirmation...</p>
+      <h2>${testMode ? "Approving test payment" : "Check your phone"}</h2>
+      ${testMode ? testModeNotice() : `<p>Enter your M-Pesa PIN to pay <strong>${formatKES(order.total)}</strong>. We're waiting for confirmation...</p>
+      <p class="summary-note">The prompt usually arrives within 10 seconds. Keep your phone unlocked. No prompt after a minute? Go back and send it again.</p>`}
     </section>`;
 }
 
@@ -138,8 +148,13 @@ async function init() {
     return;
   }
   try {
-    const [loaded, settings] = await Promise.all([getOrder(orderNumber), getSettings()]);
+    const [loaded, settings, health] = await Promise.all([
+      getOrder(orderNumber),
+      getSettings(),
+      getHealth().catch(() => ({})),
+    ]);
     order = loaded;
+    testMode = health.mpesa === "mock";
     applyShopSettings(settings);
     render();
     if (order.payment.status === "pending") pollPayment();
