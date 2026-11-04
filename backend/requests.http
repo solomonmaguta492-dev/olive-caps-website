@@ -1,0 +1,44 @@
+### Try the API from VS Code with the REST Client extension.
+### Start the server first: npm run dev
+
+@base = http://localhost:3000
+@admin = change-this-password
+
+### Shop settings
+GET {{base}}/api/settings
+
+### All products
+GET {{base}}/api/products
+
+### Beanies only
+GET {{base}}/api/products?category=Beanies
+
+### Create an order
+POST {{base}}/api/orders
+Content-Type: application/json
+
+{
+  "customer": { "name": "Jane Wanjiku", "phone": "0712345678", "email": "" },
+  "items": [{ "productId": "p001", "colour": "Olive", "quantity": 2 }],
+  "fulfilment": { "method": "pickup", "pickupPointId": "cbd-moi-avenue" }
+}
+
+### Check an order (paste the order number)
+GET {{base}}/api/orders/OC-20261104-1234
+
+### Start M-Pesa payment
+POST {{base}}/api/mpesa/stkpush
+Content-Type: application/json
+
+{ "orderNumber": "OC-20261104-1234" }
+
+### Admin: all orders
+GET {{base}}/api/admin/orders
+x-admin-password: {{admin}}
+
+### Admin: update stock
+PATCH {{base}}/api/admin/products/p001/stock
+Content-Type: application/json
+x-admin-password: {{admin}}
+
+{ "stock": 30 }
