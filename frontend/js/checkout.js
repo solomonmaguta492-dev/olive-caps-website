@@ -1,5 +1,5 @@
-import { getSettings } from "./api.js";
-import { getCart, setQuantity, removeFromCart } from "./cart.js";
+import { getSettings, createOrder } from "./api.js";
+import { getCart, setQuantity, removeFromCart, clearCart } from "./cart.js";
 import { formatKES, escapeHtml, applyShopSettings } from "./ui.js";
 
 const itemsBox = document.getElementById("cart-items");
@@ -7,6 +7,8 @@ const checkoutSection = document.getElementById("checkout");
 const form = document.getElementById("checkout-form");
 const pickupFields = document.getElementById("pickup-fields");
 const deliveryFields = document.getElementById("delivery-fields");
+const formError = document.getElementById("form-error");
+const submitButton = document.getElementById("place-order");
 
 let settings = null;
 
@@ -116,6 +118,76 @@ itemsBox.addEventListener("click", (event) => {
     return;
   }
   renderItems();
+});
+
+function markField(input, ok) {
+  input.closest(".field").classList.toggle("invalid", !ok);
+  return ok;
+}
+
+// Quick checks in the browser; the server checks everything again.
+function validate() {
+  const phoneDigits = form.phone.value.replace(/\D/g, "");
+  const checks = [
+    markField(form.name, form.name.value.trim().length >= 2),
+    markField(form.phone, /^(?:254|0)?[17]\d{8}$/.test(phoneDigits)),
+    markField(form.email, !form.email.value || form.email.checkValidity()),
+  ];
+  if (selectedMethod() === "delivery") {
+    checks.push(markField(form.county, form.county.value.trim() !== ""));
+    checks.push(markField(form.town, form.town.value.trim() !== ""));
+    checks.push(markField(form.address, form.address.value.trim().length >= 5));
+  }
+  return checks.every(Boolean);
+}
+
+function showError(message) {
+  formError.textContent = message;
+  formError.classList.toggle("hidden", !message);
+}
+
+function buildOrder() {
+  const method = selectedMethod();
+  const fulfilment =
+    method === "pickup"
+      ? { method, pickupPointId: form.pickupPointId.value }
+      : {
+          method,
+          zoneId: form.zoneId.value,
+          county: form.county.value,
+          town: form.town.value,
+          address: form.address.value,
+        };
+
+  return {
+    customer: { name: form.name.value, phone: form.phone.value, email: form.email.value },
+    items: getCart().map(({ productId, colour, quantity }) => ({ productId, colour, quantity })),
+    fulfilment,
+    notes: form.notes.value,
+  };
+}
+
+form.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  showError("");
+
+  if (!validate()) {
+    showError("Please check the highlighted fields.");
+    form.querySelector(".invalid input, .invalid textarea")?.focus();
+    return;
+  }
+
+  submitButton.disabled = true;
+  submitButton.textContent = "Placing order...";
+  try {
+    const order = await createOrder(buildOrder());
+    clearCart();
+    window.location.href = `order.html?no=${encodeURIComponent(order.orderNumber)}`;
+  } catch (err) {
+    showError(err.message);
+    submitButton.disabled = false;
+    submitButton.textContent = "Place order";
+  }
 });
 
 async function init() {
