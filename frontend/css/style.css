@@ -724,3 +724,24 @@ legend {
 .hidden {
   display: none !important;
 }
+
+/* Order summary */
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.45rem 0;
+}
+
+.summary-row.total {
+  border-top: 2px solid var(--line);
+  margin-top: 0.4rem;
+  padding-top: 0.8rem;
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+.summary-note {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
