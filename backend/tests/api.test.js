@@ -155,5 +155,5 @@ test("fitted New Era cap needs a size and keeps it on the order", async () => {
 
 test("New Era category lists the new caps", async () => {
   const caps = await (await fetch(`${base}/api/products?category=New%20Era`)).json();
-  assert.equal(caps.length, 13);
+  assert.equal(caps.length, 16);
 });
