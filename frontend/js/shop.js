@@ -1,6 +1,6 @@
 import { getProducts, getSettings } from "./api.js";
 import { addToCart } from "./cart.js";
-import { formatKES, escapeHtml, stockLabel, applyShopSettings, showToast } from "./ui.js";
+import { formatKES, escapeHtml, stockLabel, applyShopSettings, showToast, whatsappLink } from "./ui.js";
 
 const grid = document.getElementById("product-grid");
 const filters = document.getElementById("filters");
@@ -13,6 +13,12 @@ const state = {
   category: "All",
   search: "",
 };
+
+// Opens WhatsApp with a message about this cap already typed.
+function askLink(product) {
+  const message = `Hi Olive Caps, I'm interested in the ${product.name} (${formatKES(product.price)}). Is it available?`;
+  return whatsappLink(message, state.settings?.whatsappNumber);
+}
 
 function productCard(product) {
   const stock = stockLabel(product.stock);
@@ -46,6 +52,8 @@ function productCard(product) {
           <button type="button" class="btn btn-primary btn-small" data-add ${soldOut ? "disabled" : ""}>
             ${soldOut ? "Sold out" : "Add to cart"}
           </button>
+          <a class="btn btn-whatsapp btn-small" href="${askLink(product)}" target="_blank" rel="noopener"
+             aria-label="Ask about ${escapeHtml(product.name)} on WhatsApp">Ask</a>
         </div>
       </div>
     </article>`;
@@ -124,6 +132,8 @@ async function init() {
     state.settings = settings;
     applyShopSettings(settings);
     renderFilters(settings.categories);
+    const note = document.getElementById("wholesale-note");
+    if (note && settings.wholesale?.note) note.textContent = settings.wholesale.note;
     update();
   } catch (err) {
     grid.innerHTML = `<p class="notice notice-error">We couldn't load the caps. Please refresh the page.</p>`;
