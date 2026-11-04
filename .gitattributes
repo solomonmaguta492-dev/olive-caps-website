@@ -1,0 +1,5 @@
+# Same line endings (LF) on Windows, WSL and Mac, so files never show as changed by mistake.
+* text=auto eol=lf
+*.webp binary
+*.png binary
+*.jpg binary
