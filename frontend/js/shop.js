@@ -1,5 +1,6 @@
 import { getProducts, getSettings } from "./api.js";
-import { formatKES, escapeHtml, stockLabel, applyShopSettings } from "./ui.js";
+import { addToCart } from "./cart.js";
+import { formatKES, escapeHtml, stockLabel, applyShopSettings, showToast } from "./ui.js";
 
 const grid = document.getElementById("product-grid");
 const filters = document.getElementById("filters");
@@ -33,6 +34,19 @@ function productCard(product) {
           <span class="stock ${stock.cls}">${stock.text}</span>
         </div>
         ${wholesale}
+        <div class="card-options">
+          <label class="visually-hidden" for="colour-${product.id}">Colour</label>
+          <select id="colour-${product.id}" data-colour ${soldOut ? "disabled" : ""}>
+            ${product.colours.map((c) => `<option>${escapeHtml(c)}</option>`).join("")}
+          </select>
+          <label class="visually-hidden" for="qty-${product.id}">Quantity</label>
+          <input id="qty-${product.id}" data-qty type="number" min="1" max="${product.stock}" value="1" inputmode="numeric" ${soldOut ? "disabled" : ""}>
+        </div>
+        <div class="card-actions">
+          <button type="button" class="btn btn-primary btn-small" data-add ${soldOut ? "disabled" : ""}>
+            ${soldOut ? "Sold out" : "Add to cart"}
+          </button>
+        </div>
       </div>
     </article>`;
 }
@@ -84,6 +98,23 @@ searchInput.addEventListener("input", () => {
     state.search = searchInput.value;
     update();
   }, 200);
+});
+
+grid.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-add]");
+  if (!button) return;
+
+  const card = button.closest(".product-card");
+  const product = state.products.find((p) => p.id === card.dataset.id);
+  const colour = card.querySelector("[data-colour]").value;
+  const quantity = Math.max(1, Number.parseInt(card.querySelector("[data-qty]").value, 10) || 1);
+
+  if (quantity > product.stock) {
+    showToast(`Only ${product.stock} available`);
+    return;
+  }
+  addToCart(product, colour, quantity);
+  showToast(`Added ${quantity} × ${product.name}`);
 });
 
 async function init() {
