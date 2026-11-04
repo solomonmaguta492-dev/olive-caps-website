@@ -160,6 +160,8 @@ test("New Era category lists the new caps", async () => {
 
 test("Baseball Caps category includes the new caps without sizes", async () => {
   const caps = await (await fetch(`${base}/api/products?category=Baseball%20Caps`)).json();
-  assert.equal(caps.length, 11);
+  // An earlier admin test adds one extra cap, so check by id.
+  const ids = caps.map((p) => p.id);
+  for (let n = 27; n <= 35; n++) assert.ok(ids.includes(`p0${n}`));
   assert.ok(caps.every((p) => !p.sizes || p.sizes.length === 0));
 });
