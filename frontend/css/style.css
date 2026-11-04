@@ -899,3 +899,61 @@ legend {
 .contact-list a {
   font-weight: 600;
 }
+
+/* Footer and floating WhatsApp button */
+.site-footer {
+  margin-top: 3rem;
+  padding: 2.5rem 0 6rem;
+  background: var(--olive-deep);
+  color: #dfe5cf;
+}
+
+.site-footer a {
+  color: var(--white);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.site-footer h3 {
+  color: var(--white);
+  font-size: 1rem;
+}
+
+.site-footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.copyright {
+  margin-top: 2rem;
+  font-size: 0.85rem;
+  opacity: 0.75;
+}
+
+.whatsapp-float {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 30;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: var(--whatsapp);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.whatsapp-float svg {
+  width: 32px;
+  height: 32px;
+  fill: var(--white);
+}
