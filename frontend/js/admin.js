@@ -17,6 +17,9 @@ const ORDER_STATUSES = ["awaiting_payment", "processing", "ready_for_pickup", "d
 // The password is kept only for this browser tab.
 let password = sessionStorage.getItem(KEY) || "";
 let orders = [];
+let products = [];
+
+const productsBody = document.getElementById("products-body");
 
 function showDashboard(show) {
   loginPanel.classList.toggle("hidden", show);
@@ -102,8 +105,63 @@ ordersBody.addEventListener("change", async (event) => {
   }
 });
 
+function productRow(p) {
+  return `
+    <tr data-id="${p.id}">
+      <td><strong>${escapeHtml(p.name)}</strong><br><small>${escapeHtml(p.colours.join(", "))}</small></td>
+      <td>${escapeHtml(p.category)}</td>
+      <td>${formatKES(p.price)}</td>
+      <td>${p.wholesalePrice ? formatKES(p.wholesalePrice) : "-"}</td>
+      <td>
+        <input type="number" min="0" value="${p.stock}" data-stock aria-label="Stock for ${escapeHtml(p.name)}">
+        <button type="button" class="btn btn-outline btn-small" data-save-stock>Save</button>
+      </td>
+      <td>
+        <button type="button" class="btn btn-outline btn-small" data-edit>Edit</button>
+        <button type="button" class="link-button" data-delete>Delete</button>
+      </td>
+    </tr>`;
+}
+
+function renderProducts() {
+  productsBody.innerHTML = products.length
+    ? products.map(productRow).join("")
+    : `<tr><td colspan="6">No products yet. Add one below.</td></tr>`;
+}
+
+async function loadProducts() {
+  try {
+    products = await admin.products(password);
+    renderProducts();
+  } catch (err) {
+    productsBody.innerHTML = `<tr><td colspan="6">${escapeHtml(err.message)}</td></tr>`;
+  }
+}
+
+productsBody.addEventListener("click", async (event) => {
+  const row = event.target.closest("tr[data-id]");
+  if (!row || !event.target.closest("[data-save-stock]")) return;
+  const stock = Number(row.querySelector("[data-stock]").value);
+  try {
+    await admin.setStock(password, row.dataset.id, stock);
+    showToast("Stock updated");
+    await loadProducts();
+  } catch (err) {
+    showToast(err.message);
+  }
+});
+
+// Switches between the orders and products tabs.
+document.querySelectorAll("[data-tab]").forEach((tab) => {
+  tab.addEventListener("click", () => {
+    document.querySelectorAll("[data-tab]").forEach((t) => t.setAttribute("aria-pressed", t === tab));
+    document.getElementById("tab-orders").classList.toggle("hidden", tab.dataset.tab !== "orders");
+    document.getElementById("tab-products").classList.toggle("hidden", tab.dataset.tab !== "products");
+  });
+});
+
 async function loadDashboard() {
-  await loadOrders();
+  await Promise.all([loadOrders(), loadProducts()]);
 }
 
 loginForm.addEventListener("submit", async (event) => {
