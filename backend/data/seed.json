@@ -801,6 +801,192 @@
       "stock": 0
     },
     {
+      "id": "p046",
+      "name": "Feature Patch Beanie",
+      "category": "Beanies",
+      "price": 1300,
+      "wholesalePrice": 950,
+      "description": "Chunky ribbed cuffed beanie with a white Feature label.",
+      "colours": [
+        "Green",
+        "Grey",
+        "Royal Blue",
+        "Black",
+        "Mustard"
+      ],
+      "image": "images/beanies/feature-patch-beanies.webp",
+      "stock": 30
+    },
+    {
+      "id": "p047",
+      "name": "Ain't Forever Beanie",
+      "category": "Beanies",
+      "price": 1300,
+      "wholesalePrice": 950,
+      "description": "Ribbed fisherman beanie with a black woven label.",
+      "colours": [
+        "Beige",
+        "Navy",
+        "Olive",
+        "Black"
+      ],
+      "image": "images/beanies/aint-forever-beanies.webp",
+      "stock": 20
+    },
+    {
+      "id": "p048",
+      "name": "King & Fifth Beanie",
+      "category": "Beanies",
+      "price": 1300,
+      "wholesalePrice": 950,
+      "description": "Soft ribbed cuffed beanie with a small woven label.",
+      "colours": [
+        "Heather Grey",
+        "Burgundy"
+      ],
+      "image": "images/beanies/king-fifth-beanies.webp",
+      "stock": 12
+    },
+    {
+      "id": "p049",
+      "name": "BR Mood Patch Beanie",
+      "category": "Beanies",
+      "price": 1500,
+      "wholesalePrice": 1100,
+      "description": "Ribbed cuffed beanie with an illustrated mood patch and BR label.",
+      "colours": [
+        "Teal",
+        "Black",
+        "White",
+        "Grey"
+      ],
+      "image": "images/beanies/br-mood-patch-beanies.webp",
+      "stock": 16
+    },
+    {
+      "id": "p050",
+      "name": "Corteiz Script Beanie",
+      "category": "Beanies",
+      "price": 1600,
+      "wholesalePrice": 1200,
+      "description": "Short skully beanie with a big knitted star script.",
+      "colours": [
+        "Brown",
+        "Grey",
+        "Black",
+        "White"
+      ],
+      "image": "images/beanies/corteiz-script-beanies.webp",
+      "stock": 20
+    },
+    {
+      "id": "p051",
+      "name": "Stüssy Cuffed Beanie",
+      "category": "Beanies",
+      "price": 1500,
+      "wholesalePrice": 1100,
+      "description": "Cuffed knit beanie with the embroidered script logo.",
+      "colours": [
+        "Black",
+        "White",
+        "Grey"
+      ],
+      "image": "images/beanies/stussy-cuffed-beanies.webp",
+      "stock": 18
+    },
+    {
+      "id": "p052",
+      "name": "Spider Web Beanie",
+      "category": "Beanies",
+      "price": 1300,
+      "wholesalePrice": 950,
+      "description": "Short skully beanie with an all-over knitted spider web.",
+      "colours": [
+        "White",
+        "Black"
+      ],
+      "image": "images/beanies/spider-web-beanies.webp",
+      "stock": 14
+    },
+    {
+      "id": "p053",
+      "name": "Triple Cross Beanie, Black",
+      "category": "Beanies",
+      "price": 1300,
+      "wholesalePrice": 950,
+      "description": "Black skully beanie with a white knitted triple cross.",
+      "colours": [
+        "Black"
+      ],
+      "image": "images/beanies/triple-cross-beanie-black.webp",
+      "stock": 10
+    },
+    {
+      "id": "p054",
+      "name": "Cross Cuffed Beanie, Black",
+      "category": "Beanies",
+      "price": 1000,
+      "wholesalePrice": 700,
+      "description": "Black cuffed beanie with a small white embroidered cross.",
+      "colours": [
+        "Black"
+      ],
+      "image": "images/beanies/cross-cuffed-beanie-black.webp",
+      "stock": 15
+    },
+    {
+      "id": "p055",
+      "name": "Chrome Hearts Cross Beanie, Black",
+      "category": "Beanies",
+      "price": 2500,
+      "wholesalePrice": 1900,
+      "description": "Black ribbed beanie with a leather cross patch and metal cross studs.",
+      "colours": [
+        "Black"
+      ],
+      "image": "images/beanies/chrome-hearts-cross-beanie.webp",
+      "stock": 5
+    },
+    {
+      "id": "p056",
+      "name": "Adidas Cuffed Beanie, Black",
+      "category": "Beanies",
+      "price": 1300,
+      "wholesalePrice": 950,
+      "description": "Classic cuffed knit beanie with the embroidered logo.",
+      "colours": [
+        "Black"
+      ],
+      "image": "images/beanies/adidas-cuffed-beanie-black.webp",
+      "stock": 12
+    },
+    {
+      "id": "p057",
+      "name": "New Balance Running Beanie, Black",
+      "category": "Beanies",
+      "price": 1200,
+      "wholesalePrice": 850,
+      "description": "Light stretch beanie for runs and the gym, with a reflective logo.",
+      "colours": [
+        "Black"
+      ],
+      "image": "images/beanies/new-balance-running-beanie.webp",
+      "stock": 10
+    },
+    {
+      "id": "p058",
+      "name": "Rick Embroidered Beanie, Black",
+      "category": "Beanies",
+      "price": 1100,
+      "wholesalePrice": 800,
+      "description": "Black cuffed beanie with an embroidered cartoon face patch.",
+      "colours": [
+        "Black"
+      ],
+      "image": "images/beanies/rick-beanie-black.webp",
+      "stock": 10
+    },
+    {
       "id": "p007",
       "name": "Ribbed Knit Beanie",
       "category": "Beanies",
