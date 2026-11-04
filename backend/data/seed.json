@@ -339,6 +339,88 @@
       ]
     },
     {
+      "id": "p024",
+      "name": "MLB 59FIFTY Fitted Collection",
+      "category": "New Era",
+      "price": 3800,
+      "wholesalePrice": 3000,
+      "description": "Twelve fitted styles with side patches: Dodgers, Yankees script, Giants, White Sox and Mets. Choose your style and size.",
+      "colours": [
+        "Dodgers Cream/Sky Blue",
+        "Dodgers Royal Blue",
+        "Dodgers Black/Black",
+        "Yankees Script Red",
+        "Yankees Script Cream/Sky Blue",
+        "Giants Brown/Black",
+        "White Sox Royal Blue",
+        "White Sox Black",
+        "White Sox Red",
+        "White Sox Cream/Purple",
+        "White Sox Grey",
+        "Mets Black/Green"
+      ],
+      "image": "images/new-era/mlb-59fifty-grass-collection.webp",
+      "stock": 24,
+      "sizes": [
+        "6 7/8",
+        "7",
+        "7 1/8",
+        "7 1/4",
+        "7 3/8",
+        "7 1/2",
+        "7 5/8",
+        "7 3/4"
+      ]
+    },
+    {
+      "id": "p025",
+      "name": "NY Yankees Script 59FIFTY Fitted",
+      "category": "New Era",
+      "price": 3800,
+      "wholesalePrice": 3000,
+      "description": "Yankees script logo with a classic Yankees side patch. Red with white script, or cream with a sky blue brim.",
+      "colours": [
+        "Red/White",
+        "Cream/Sky Blue"
+      ],
+      "image": "images/new-era/yankees-script-59fifty.webp",
+      "stock": 8,
+      "sizes": [
+        "6 7/8",
+        "7",
+        "7 1/8",
+        "7 1/4",
+        "7 3/8",
+        "7 1/2",
+        "7 5/8",
+        "7 3/4"
+      ]
+    },
+    {
+      "id": "p026",
+      "name": "Philadelphia Phillies 59FIFTY Fitted",
+      "category": "New Era",
+      "price": 3800,
+      "wholesalePrice": 3000,
+      "description": "Phillies P logo. Royal blue with a World Series side patch, or tan with a Veterans Stadium patch.",
+      "colours": [
+        "Royal Blue",
+        "Tan"
+      ],
+      "image": "images/new-era/phillies-59fifty.webp",
+      "stock": 6,
+      "sizes": [
+        "6 7/8",
+        "7",
+        "7 1/8",
+        "7 1/4",
+        "7 3/8",
+        "7 1/2",
+        "7 5/8",
+        "7 3/4"
+      ]
+    },
+    {
       "id": "p001",
       "name": "Classic Olive Baseball Cap",
       "category": "Baseball Caps",
