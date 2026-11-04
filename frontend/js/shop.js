@@ -20,7 +20,18 @@ function askLink(product) {
   return whatsappLink(message, state.settings?.whatsappNumber);
 }
 
+// Fitted caps show a size list; the customer must pick one.
+function sizeSelect(product, soldOut) {
+  return `
+    <label class="visually-hidden" for="size-${product.id}">Size</label>
+    <select id="size-${product.id}" data-size ${soldOut ? "disabled" : ""}>
+      <option value="">Size</option>
+      ${product.sizes.map((s) => `<option>${escapeHtml(s)}</option>`).join("")}
+    </select>`;
+}
+
 function productCard(product) {
+  const sizes = product.sizes || [];
   const stock = stockLabel(product.stock);
   const soldOut = product.stock <= 0;
   const minQty = state.settings?.wholesale?.minQuantity || 10;
@@ -40,11 +51,12 @@ function productCard(product) {
           <span class="stock ${stock.cls}">${stock.text}</span>
         </div>
         ${wholesale}
-        <div class="card-options">
+        <div class="card-options ${sizes.length ? "has-sizes" : ""}">
           <label class="visually-hidden" for="colour-${product.id}">Colour</label>
           <select id="colour-${product.id}" data-colour ${soldOut ? "disabled" : ""}>
             ${product.colours.map((c) => `<option>${escapeHtml(c)}</option>`).join("")}
           </select>
+          ${sizes.length ? sizeSelect(product, soldOut) : ""}
           <label class="visually-hidden" for="qty-${product.id}">Quantity</label>
           <input id="qty-${product.id}" data-qty type="number" min="1" max="${product.stock}" value="1" inputmode="numeric" ${soldOut ? "disabled" : ""}>
         </div>
@@ -116,13 +128,21 @@ grid.addEventListener("click", (event) => {
   const product = state.products.find((p) => p.id === card.dataset.id);
   const colour = card.querySelector("[data-colour]").value;
   const quantity = Math.max(1, Number.parseInt(card.querySelector("[data-qty]").value, 10) || 1);
+  const sizeSelectEl = card.querySelector("[data-size]");
+  const size = sizeSelectEl ? sizeSelectEl.value : null;
+
+  if (sizeSelectEl && !size) {
+    sizeSelectEl.focus();
+    showToast("Please choose a size");
+    return;
+  }
 
   if (quantity > product.stock) {
     showToast(`Only ${product.stock} available`);
     return;
   }
-  addToCart(product, colour, quantity);
-  showToast(`Added ${quantity} × ${product.name}`);
+  addToCart(product, colour, quantity, size);
+  showToast(`Added ${quantity} × ${product.name}${size ? `, size ${size}` : ""}`);
 });
 
 async function init() {
