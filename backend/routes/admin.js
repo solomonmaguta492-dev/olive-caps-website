@@ -60,6 +60,7 @@ function productFromBody(body, categories) {
     colours: colours.length ? colours : ["One colour"],
     sizes,
     imageBack: String(body.imageBack || "").trim() || undefined,
+    imageBackLabel: String(body.imageBackLabel || "").trim() || undefined,
     image: String(body.image || "images/baseball-cap.svg").trim(),
     stock,
     active: body.active !== false,
