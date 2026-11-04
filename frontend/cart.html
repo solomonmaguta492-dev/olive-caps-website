@@ -69,7 +69,50 @@
             </div>
           </fieldset>
 
-          <!-- DELIVERY -->
+          <fieldset>
+            <legend>Pickup or delivery</legend>
+            <div class="choice-group">
+              <label class="choice">
+                <input type="radio" name="method" value="pickup" checked>
+                <span><strong>Pickup</strong><small>Free, from our pickup points</small></span>
+              </label>
+              <label class="choice">
+                <input type="radio" name="method" value="delivery">
+                <span><strong>Delivery</strong><small>To your door, fee by area</small></span>
+              </label>
+            </div>
+
+            <div id="pickup-fields" class="form-grid" style="margin-top: 1rem;">
+              <div class="field">
+                <label for="pickupPointId">Pickup point</label>
+                <select id="pickupPointId" name="pickupPointId"></select>
+              </div>
+            </div>
+
+            <div id="delivery-fields" class="form-grid two hidden" style="margin-top: 1rem;">
+              <div class="field">
+                <label for="zoneId">Delivery area</label>
+                <select id="zoneId" name="zoneId"></select>
+              </div>
+              <div class="field">
+                <label for="county">County</label>
+                <input id="county" name="county" autocomplete="address-level1" placeholder="e.g. Nairobi">
+              </div>
+              <div class="field">
+                <label for="town">Town / estate</label>
+                <input id="town" name="town" autocomplete="address-level2" placeholder="e.g. Kilimani">
+              </div>
+              <div class="field">
+                <label for="address">Address or landmark</label>
+                <textarea id="address" name="address" autocomplete="street-address" placeholder="Building, street, house number or a landmark"></textarea>
+              </div>
+            </div>
+
+            <div class="field" style="margin-top: 1rem;">
+              <label for="notes">Order notes <span class="hint">(optional)</span></label>
+              <textarea id="notes" name="notes" maxlength="300" placeholder="Anything we should know?"></textarea>
+            </div>
+          </fieldset>
 
           <div id="form-error" class="notice notice-error hidden" role="alert"></div>
           <button type="submit" class="btn btn-primary btn-block" id="place-order">Place order</button>
