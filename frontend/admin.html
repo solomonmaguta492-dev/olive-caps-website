@@ -70,7 +70,59 @@
       </section>
 
       <section id="tab-products" class="hidden">
-        <!-- PRODUCTS -->
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr><th>Product</th><th>Category</th><th>Price</th><th>Wholesale</th><th>Stock</th><th>Actions</th></tr>
+            </thead>
+            <tbody id="products-body"></tbody>
+          </table>
+        </div>
+
+        <div class="panel mt-lg">
+          <h2 id="product-form-title">Add a product</h2>
+          <form id="product-form" class="form-grid two">
+            <input type="hidden" name="id">
+            <div class="field">
+              <label for="p-name">Name</label>
+              <input id="p-name" name="name" required>
+            </div>
+            <div class="field">
+              <label for="p-category">Category</label>
+              <select id="p-category" name="category"></select>
+            </div>
+            <div class="field">
+              <label for="p-price">Price (KES)</label>
+              <input id="p-price" name="price" type="number" min="1" required>
+            </div>
+            <div class="field">
+              <label for="p-wholesale">Wholesale price (KES)</label>
+              <input id="p-wholesale" name="wholesalePrice" type="number" min="1">
+            </div>
+            <div class="field">
+              <label for="p-stock">Stock</label>
+              <input id="p-stock" name="stock" type="number" min="0" required>
+            </div>
+            <div class="field">
+              <label for="p-colours">Colours</label>
+              <input id="p-colours" name="colours" placeholder="Olive, Black, Beige">
+              <span class="hint">Separate with commas</span>
+            </div>
+            <div class="field">
+              <label for="p-image">Image path</label>
+              <input id="p-image" name="image" placeholder="images/baseball-cap.svg">
+            </div>
+            <div class="field">
+              <label for="p-description">Description</label>
+              <textarea id="p-description" name="description"></textarea>
+            </div>
+            <div id="product-error" class="notice notice-error hidden" role="alert"></div>
+            <div class="admin-toolbar">
+              <button class="btn btn-primary" type="submit">Save product</button>
+              <button class="btn btn-outline hidden" type="button" id="cancel-edit">Cancel</button>
+            </div>
+          </form>
+        </div>
       </section>
     </div>
   </main>
