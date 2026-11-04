@@ -42,7 +42,7 @@ function payForm(message = "") {
       <form id="pay-form" class="form-grid">
         <div class="field">
           <label for="pay-phone">M-Pesa phone number</label>
-          <input id="pay-phone" type="tel" inputmode="tel" placeholder="0712 345 678" required>
+          <input id="pay-phone" type="tel" inputmode="tel" placeholder="0712 345 678">
           <span class="hint">Number on your order: ${escapeHtml(order.phone)}. Leave empty to use it.</span>
         </div>
         <button class="btn btn-primary btn-block" type="submit">Send M-Pesa prompt</button>
