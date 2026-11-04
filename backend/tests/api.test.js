@@ -165,3 +165,9 @@ test("Baseball Caps category includes the new caps without sizes", async () => {
   for (let n = 27; n <= 35; n++) assert.ok(ids.includes(`p0${n}`));
   assert.ok(caps.every((p) => !p.sizes || p.sizes.length === 0));
 });
+
+test("Trucker Hats category includes the new Feature and print truckers", async () => {
+  const caps = await (await fetch(`${base}/api/products?category=Trucker%20Hats`)).json();
+  const ids = caps.map((p) => p.id);
+  for (let n = 36; n <= 45; n++) assert.ok(ids.includes(`p0${n}`));
+});
