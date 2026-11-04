@@ -21,6 +21,7 @@ Customers can shop on the website and pay with **M-Pesa**, or order directly on 
 olive-caps-website/
 ├── frontend/              Static website (HTML, CSS, JavaScript modules)
 │   ├── index.html         Shop page
+│   ├── 404.html           Page not found
 │   ├── cart.html          Cart and checkout
 │   ├── order.html         Order summary and M-Pesa payment
 │   ├── how-to-order.html  Ordering, payments, delivery, contact
@@ -36,7 +37,9 @@ olive-caps-website/
     ├── services/          mpesa (Daraja), notify
     ├── middleware/        adminAuth
     ├── utils/pricing.js   Totals, delivery fees, wholesale prices
+    ├── requests.http      API requests to try in VS Code
     └── tests/             Node test runner tests
+docs/                      API reference and M-Pesa setup guide
 ```
 
 ## Getting started
@@ -44,11 +47,20 @@ olive-caps-website/
 Requirements: [Node.js](https://nodejs.org) 18 or newer.
 
 ```bash
-cd backend
-npm install
-cp .env.example .env
+git clone https://github.com/solomonmaguta492-dev/olive-caps-website.git
+cd olive-caps-website
+code .
+```
+
+Then, in the VS Code terminal (Ctrl + `):
+
+```bash
+npm run setup
+cp backend/.env.example backend/.env
 npm run dev
 ```
+
+On Windows Command Prompt use `copy backend\.env.example backend\.env` instead of `cp`.
 
 Open http://localhost:3000. The backend also serves the website from `frontend/`.
 
@@ -59,9 +71,10 @@ Admin dashboard: http://localhost:3000/admin.html, password = `ADMIN_PASSWORD` i
 Run the tests:
 
 ```bash
-cd backend
 npm test
 ```
+
+The recommended VS Code extensions (Prettier, ESLint, Live Server, REST Client) are listed in `.vscode/extensions.json`; VS Code offers to install them when you open the folder. With REST Client, open `backend/requests.http` and click **Send Request** above any request.
 
 ## Setting up M-Pesa (Daraja)
 
@@ -88,7 +101,11 @@ The backend serves the frontend, so one deploy is enough. [Render](https://rende
 - Start command: `npm start`
 - Add the variables from `.env.example` in the dashboard
 
-The JSON file database is fine for starting out. As orders grow, move to MongoDB or PostgreSQL by replacing `db.js`.
+Or use the included `render.yaml`: on Render choose **New → Blueprint** and pick this repo.
+
+The JSON file database is fine for learning and testing, but on free hosting the file resets when the server restarts. Before taking real orders, move to MongoDB or PostgreSQL by replacing `db.js`, or add a persistent disk.
+
+More detail: [docs/API.md](docs/API.md) and [docs/MPESA-SETUP.md](docs/MPESA-SETUP.md).
 
 ## Roadmap
 
