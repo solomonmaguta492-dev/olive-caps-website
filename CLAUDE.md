@@ -39,7 +39,7 @@ When asked "what can be improved", start from this list, then look at the code f
 2. **Notifications**: `backend/services/notify.js` only logs. Add email (Nodemailer) or SMS (Africa's Talking) for the owner and customer.
 3. **Admin security**: a single shared password in a header. Add proper login with sessions or JWT, and rate-limit attempts.
 4. **Callback security**: add a secret token to `MPESA_CALLBACK_URL` and check it, and/or confirm payments with Daraja's STK query API.
-5. **Stock per colour**: stock is per product, not per colour.
+5. **Stock per colour and size**: stock is per product, not per colour or size (New Era fitted caps have sizes 6 7/8 to 7 3/4).
 6. **Product images**: illustrations are placeholders. Add real photos (WebP) and image upload in the admin.
 7. **Product page**: a page per cap with several photos and a size guide.
 8. **Pending payments**: reserve stock while a payment is pending, and expire unpaid orders.
