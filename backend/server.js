@@ -28,7 +28,9 @@ export function createApp() {
   app.use("/api", (req, res) => res.status(404).json({ error: "Not found" }));
 
   // The same server hosts the website.
-  app.use(express.static(join(here, "..", "frontend")));
+  const site = join(here, "..", "frontend");
+  app.use(express.static(site));
+  app.use((req, res) => res.status(404).sendFile(join(site, "404.html")));
 
   return app;
 }
