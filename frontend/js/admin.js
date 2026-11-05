@@ -38,11 +38,13 @@ function renderStats() {
   const paid = orders.filter((o) => o.payment.status === "paid");
   const revenue = paid.reduce((sum, o) => sum + o.payment.amountReceived, 0);
   const toPrepare = orders.filter((o) => o.status === "processing").length;
+  const toConfirm = orders.filter((o) => o.payment.status === "awaiting_confirmation").length;
   const kenyaDay = (d) => new Date(d).toLocaleDateString("en-CA", { timeZone: "Africa/Nairobi" });
   const today = kenyaDay(Date.now());
   const todayCount = orders.filter((o) => kenyaDay(o.createdAt) === today).length;
 
   statsBox.innerHTML = `
+    <div class="stat ${toConfirm ? "stat-alert" : ""}"><span>Payments to confirm</span><strong>${toConfirm}</strong></div>
     <div class="stat"><span>Orders today</span><strong>${todayCount}</strong></div>
     <div class="stat"><span>Paid orders</span><strong>${paid.length}</strong></div>
     <div class="stat"><span>To prepare</span><strong>${toPrepare}</strong></div>
@@ -54,6 +56,7 @@ function filteredOrders() {
   if (filter === "paid") return orders.filter((o) => o.payment.status === "paid");
   if (filter === "unpaid") return orders.filter((o) => o.payment.status !== "paid");
   if (filter === "processing") return orders.filter((o) => o.status === "processing");
+  if (filter === "confirm") return orders.filter((o) => o.payment.status === "awaiting_confirmation");
   return orders;
 }
 
@@ -63,6 +66,14 @@ function orderRow(o) {
   const items = o.items.map((i) => `${i.quantity} × ${escapeHtml(i.name)} (${escapeHtml(i.colour)}${i.size ? `, size ${escapeHtml(i.size)}` : ""})`).join("<br>");
   const options = ORDER_STATUSES.map((s) => `<option value="${s}" ${s === o.status ? "selected" : ""}>${statusText(s)}</option>`).join("");
   const reference = o.payment.reference ? `<br>Ref: <strong>${escapeHtml(o.payment.reference)}</strong>` : "";
+  // Send Money codes wait here until you check your M-Pesa messages.
+  const review =
+    o.payment.status === "awaiting_confirmation"
+      ? `<div class="review-actions">
+           <button type="button" class="btn btn-primary btn-small" data-review="confirm" data-order="${o.orderNumber}">Confirm paid</button>
+           <button type="button" class="btn btn-outline btn-small" data-review="reject" data-order="${o.orderNumber}">Not found</button>
+         </div>`
+      : "";
   const paidAt = o.payment.paidAt ? `<br>${formatDate(o.payment.paidAt)}` : "";
 
   return `
@@ -72,7 +83,7 @@ function orderRow(o) {
       <td>${items}</td>
       <td>${place}</td>
       <td>${formatKES(o.total)}<br><small>Delivery ${formatKES(o.deliveryFee)}</small></td>
-      <td><span class="status-badge status-${o.payment.status}">${statusText(o.payment.status)}</span><br>${formatKES(o.payment.amountReceived)}${reference}${paidAt}</td>
+      <td><span class="status-badge status-${o.payment.status}">${statusText(o.payment.status)}</span><br>${formatKES(o.payment.amountReceived)}<br><small>${escapeHtml(o.payment.method || "")}</small>${reference}${paidAt}${review}</td>
       <td><select data-order="${o.orderNumber}" aria-label="Status of ${o.orderNumber}">${options}</select></td>
     </tr>`;
 }
@@ -96,6 +107,24 @@ async function loadOrders() {
 
 orderFilter.addEventListener("change", renderOrders);
 document.getElementById("refresh-orders").addEventListener("click", loadOrders);
+
+ordersBody.addEventListener("click", async (event) => {
+  const button = event.target.closest("[data-review]");
+  if (!button) return;
+  const order = orders.find((o) => o.orderNumber === button.dataset.order);
+  const confirmText =
+    button.dataset.review === "confirm"
+      ? `Mark ${order.orderNumber} as paid? Check your M-Pesa messages for ${order.payment.reference} (${formatKES(order.total)}) first.`
+      : `Tell the customer that payment ${order.payment.reference} wasn't found?`;
+  if (!window.confirm(confirmText)) return;
+  try {
+    await admin.reviewPayment(password, order.orderNumber, button.dataset.review);
+    showToast(button.dataset.review === "confirm" ? "Payment confirmed" : "Customer asked to pay again");
+    await loadOrders();
+  } catch (err) {
+    showToast(err.message);
+  }
+});
 
 ordersBody.addEventListener("change", async (event) => {
   const select = event.target.closest("[data-order]");
