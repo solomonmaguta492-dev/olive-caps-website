@@ -2,7 +2,6 @@ import { Router } from "express";
 import { readDb, updateDb } from "../db.js";
 import { adminAuth } from "../middleware/adminAuth.js";
 import { reviewManualPayment } from "../services/orders.js";
-import { salesWorkbook } from "../services/excel.js";
 
 const router = Router();
 router.use(adminAuth);
@@ -15,20 +14,6 @@ router.get("/check", (req, res) => res.json({ ok: true }));
 router.get("/orders", (req, res) => {
   const orders = [...readDb().orders].sort((a, b) => b.createdAt.localeCompare(a.createdAt));
   res.json(orders);
-});
-
-// GET /api/admin/sales.xlsx?scope=paid|all: Excel report of sales and stock.
-router.get("/sales.xlsx", async (req, res) => {
-  const all = req.query.scope === "all";
-  const db = readDb();
-  const orders = db.orders
-    .filter((o) => all || o.payment.status === "paid")
-    .sort((a, b) => a.createdAt.localeCompare(b.createdAt));
-  const day = new Date().toLocaleDateString("en-CA", { timeZone: "Africa/Nairobi" });
-  const buffer = await salesWorkbook(orders, db.products);
-  res.set("Content-Type", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
-  res.set("Content-Disposition", `attachment; filename="olive-caps-${all ? "all-orders" : "sales"}-${day}.xlsx"`);
-  res.send(Buffer.from(buffer));
 });
 
 router.patch("/orders/:orderNumber", (req, res) => {
