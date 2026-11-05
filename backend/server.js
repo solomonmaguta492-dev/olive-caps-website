@@ -38,7 +38,7 @@ export function createApp() {
 // Start listening only when run directly (not in tests).
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const port = process.env.PORT || 3000;
-  createApp().listen(port, () => {
+  const server = createApp().listen(port, () => {
     console.log(`Olive Caps running on http://localhost:${port} (M-Pesa: ${mpesaMode()})`);
     if (mpesaMode() === "mock") {
       console.log("M-Pesa is in test mode: no real prompts are sent. See docs/MPESA-SETUP.md to switch.");
@@ -47,5 +47,13 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
       const missing = needed.filter((name) => !process.env[name]);
       if (missing.length) console.warn(`M-Pesa will not work until you set these in backend/.env: ${missing.join(", ")}`);
     }
+  });
+
+  // Friendly message when another copy of the site is already using the port.
+  server.on("error", (err) => {
+    if (err.code !== "EADDRINUSE") throw err;
+    console.error(`\nPort ${port} is already in use: the site is probably running in another terminal.`);
+    console.error("Stop it there with Ctrl + C, or start this one on another port: PORT=3001 npm run dev\n");
+    process.exit(1);
   });
 }
