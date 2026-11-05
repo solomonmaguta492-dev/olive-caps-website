@@ -65,7 +65,7 @@
                 <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="0712 345 678" required>
                 <span class="hint">We'll call or WhatsApp you on this number about your order.</span>
               </div>
-              <div class="field">
+              <div class="field" id="mpesaPhone-field">
                 <label for="mpesaPhone">M-Pesa number to pay with</label>
                 <input id="mpesaPhone" name="mpesaPhone" type="tel" inputmode="tel" autocomplete="tel" placeholder="Same as phone number">
                 <span class="hint">The payment prompt pops up on this phone. Leave empty to use your phone number.</span>
@@ -120,6 +120,11 @@
               <label for="notes">Order notes <span class="hint">(optional)</span></label>
               <textarea id="notes" name="notes" maxlength="300" placeholder="Anything we should know?"></textarea>
             </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>How to pay</legend>
+            <div id="payment-options" class="choice-group"></div>
           </fieldset>
 
           <div id="form-error" class="notice notice-error hidden" role="alert"></div>
