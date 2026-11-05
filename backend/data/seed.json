@@ -18,6 +18,7 @@
       "Trucker Hats",
       "Snapbacks",
       "Beanies",
+      "Skull Caps",
       "Bucket Hats"
     ],
     "wholesale": {
@@ -1022,6 +1023,112 @@
       ],
       "image": "images/beanies/fisherman-beanie-grey.webp",
       "stock": 12
+    },
+    {
+      "id": "p069",
+      "name": "Syna Skull Cap, Black",
+      "category": "Skull Caps",
+      "price": 1300,
+      "wholesalePrice": 950,
+      "description": "Stretchy black skull cap with the white embroidered Syna graffiti logo. Fits close under hoods and helmets.",
+      "colours": [
+        "Black/White Logo"
+      ],
+      "image": "images/skull-caps/syna-skull-cap-black.webp",
+      "stock": 20,
+      "gallery": [
+        "images/skull-caps/syna-skull-cap-black-studio.webp",
+        "images/skull-caps/syna-skull-cap-black-mannequin.webp"
+      ]
+    },
+    {
+      "id": "p070",
+      "name": "Syna Skull Cap, Colours",
+      "category": "Skull Caps",
+      "price": 1300,
+      "wholesalePrice": 950,
+      "description": "Syna skull cap with a coloured logo. Pick your combo.",
+      "colours": [
+        "White/Black Logo",
+        "Black/Red Logo",
+        "Grey/Yellow Logo",
+        "Black/White Logo"
+      ],
+      "image": "images/skull-caps/syna-skull-caps-colours.webp",
+      "stock": 24
+    },
+    {
+      "id": "p071",
+      "name": "Syna Skull Cap, White",
+      "category": "Skull Caps",
+      "price": 1300,
+      "wholesalePrice": 950,
+      "description": "Clean white skull cap with a black embroidered Syna logo.",
+      "colours": [
+        "White/Black Logo"
+      ],
+      "image": "images/skull-caps/syna-skull-cap-white.webp",
+      "stock": 10
+    },
+    {
+      "id": "p072",
+      "name": "Syna Skull Cap, Black with Grey Logo",
+      "category": "Skull Caps",
+      "price": 1300,
+      "wholesalePrice": 950,
+      "description": "Black skull cap with a subtle grey Syna logo.",
+      "colours": [
+        "Black/Grey Logo"
+      ],
+      "image": "images/skull-caps/syna-skull-cap-grey-logo.webp",
+      "stock": 10
+    },
+    {
+      "id": "p073",
+      "name": "Nike Dri-FIT Skull Cap",
+      "category": "Skull Caps",
+      "price": 1200,
+      "wholesalePrice": 850,
+      "description": "Light, sweat-wicking skull cap with the swoosh. Great for training, football and under helmets.",
+      "colours": [
+        "Black",
+        "Grey"
+      ],
+      "image": "images/skull-caps/nike-dri-fit-skull-cap-box.webp",
+      "stock": 30,
+      "gallery": [
+        "images/skull-caps/nike-skull-caps-black-grey.webp",
+        "images/skull-caps/nike-skull-caps-black-stack.webp"
+      ]
+    },
+    {
+      "id": "p074",
+      "name": "Corteiz Skull Cap, Black",
+      "category": "Skull Caps",
+      "price": 1300,
+      "wholesalePrice": 950,
+      "description": "Black stretch skull cap with the white embroidered Corteiz script.",
+      "colours": [
+        "Black"
+      ],
+      "image": "images/skull-caps/corteiz-skull-cap-black.webp",
+      "stock": 12
+    },
+    {
+      "id": "p075",
+      "name": "Tribe Skull Cap",
+      "category": "Skull Caps",
+      "price": 1000,
+      "wholesalePrice": 700,
+      "description": "Soft stretch skull cap with an embroidered Tribe script.",
+      "colours": [
+        "Black/Red Logo",
+        "Black/White Logo",
+        "Grey",
+        "White"
+      ],
+      "image": "images/skull-caps/tribe-skull-caps.webp",
+      "stock": 20
     },
     {
       "id": "p059",
