@@ -1239,3 +1239,19 @@ legend {
 .wa-option small {
   opacity: 0.85;
 }
+
+/* Social links with an icon */
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.social-icon {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linejoin: round;
+}
