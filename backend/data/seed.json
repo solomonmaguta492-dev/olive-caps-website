@@ -5,6 +5,12 @@
     "whatsappNumber": "254790868908",
     "phone": "+254 790 868 908",
     "email": "hello@olivecaps.co.ke",
+    "sendMoney": {
+      "number": "0790868908",
+      "displayNumber": "0790 868 908",
+      "accountName": "",
+      "note": "Send the exact total, then enter the M-Pesa confirmation code from your SMS."
+    },
     "instagram": "olivecaps",
     "categories": [
       "New Era",
