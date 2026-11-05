@@ -3,8 +3,8 @@ services:
   - type: web
     name: olive-caps
     runtime: node
-    rootDir: backend
-    buildCommand: npm install
+    # Build from the project root so the website (frontend/) is included.
+    buildCommand: npm run setup
     startCommand: npm start
     healthCheckPath: /api/health
     envVars:
