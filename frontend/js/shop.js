@@ -86,7 +86,12 @@ function productCard(product) {
 
 function render(products) {
   if (products.length === 0) {
-    grid.innerHTML = `<p class="notice">No caps match your search. Try another word or category.</p>`;
+    // A category with nothing in it yet shows "coming soon" instead of "no match".
+    const emptyCategory =
+      state.category !== "All" && !state.search.trim() && !state.products.some((p) => p.category === state.category);
+    grid.innerHTML = emptyCategory
+      ? `<p class="notice">${escapeHtml(state.category)} coming soon. <a data-whatsapp="Hi Olive Caps, do you have ${escapeHtml(state.category.toLowerCase())}?" href="${whatsappLink(`Hi Olive Caps, do you have ${state.category.toLowerCase()}?`, state.settings?.whatsappNumber)}">Ask us on WhatsApp</a>.</p>`
+      : `<p class="notice">No caps match your search. Try another word or category.</p>`;
     return;
   }
   grid.innerHTML = products.map(productCard).join("");
