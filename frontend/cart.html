@@ -60,7 +60,12 @@
               <div class="field">
                 <label for="phone">Phone number</label>
                 <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="0712 345 678" required>
-                <span class="hint">We'll send the M-Pesa prompt to this number.</span>
+                <span class="hint">We'll call or WhatsApp you on this number about your order.</span>
+              </div>
+              <div class="field">
+                <label for="mpesaPhone">M-Pesa number to pay with</label>
+                <input id="mpesaPhone" name="mpesaPhone" type="tel" inputmode="tel" autocomplete="tel" placeholder="Same as phone number">
+                <span class="hint">The payment prompt pops up on this phone. Leave empty to use your phone number.</span>
               </div>
               <div class="field">
                 <label for="email">Email <span class="hint">(optional)</span></label>
@@ -115,7 +120,7 @@
           </fieldset>
 
           <div id="form-error" class="notice notice-error hidden" role="alert"></div>
-          <button type="submit" class="btn btn-primary btn-block" id="place-order">Place order</button>
+          <button type="submit" class="btn btn-primary btn-block" id="place-order">Place order &amp; pay with M-Pesa</button>
           <p class="summary-note">Prefer to chat? <a data-whatsapp href="#" target="_blank" rel="noopener">Order on WhatsApp instead</a>.</p>
         </form>
       </section>
