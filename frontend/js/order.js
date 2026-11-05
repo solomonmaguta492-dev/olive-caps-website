@@ -1,5 +1,5 @@
-import { getOrder, getSettings, startMpesaPayment, getHealth } from "./api.js";
-import { formatKES, escapeHtml, applyShopSettings, statusText } from "./ui.js";
+import { getOrder, getSettings, startMpesaPayment, getHealth, submitMpesaCode } from "./api.js";
+import { formatKES, escapeHtml, applyShopSettings, statusText, showToast, whatsappLink } from "./ui.js";
 
 const view = document.getElementById("order-view");
 const params = new URLSearchParams(window.location.search);
@@ -9,6 +9,7 @@ const promptFailed = params.get("prompt") === "failed";
 let order = null;
 let pollTimer = null;
 let testMode = false;
+let shop = {};
 
 // Warns that no real prompt is sent while M-Pesa is in mock (test) mode.
 function testModeNotice() {
@@ -82,14 +83,73 @@ function paid() {
     <section class="panel pay-box" aria-live="polite">
       <div class="success-icon" aria-hidden="true">✓</div>
       <h2>Payment received. Thank you!</h2>
-      <p>M-Pesa reference <strong>${escapeHtml(order.payment.reference)}</strong>, ${formatKES(order.payment.amountReceived)}.</p>
+      <p>${order.payment.reference ? `M-Pesa reference <strong>${escapeHtml(order.payment.reference)}</strong>, ` : ""}${formatKES(order.payment.amountReceived)}.</p>
       <p>We're preparing your order and will contact you on your phone number.</p>
       <a class="btn btn-outline" href="index.html#shop">Continue shopping</a>
     </section>`;
 }
 
+// Send Money: step-by-step instructions and a box for the M-Pesa code.
+function sendMoneyBox(message = "") {
+  const number = shop.sendMoney?.number || "";
+  const display = shop.sendMoney?.displayNumber || number;
+  const help = whatsappLink(`Hi Olive Caps, I need help paying for order ${order.orderNumber}.`, shop.whatsappNumber);
+  return `
+    <section class="panel pay-box">
+      <h2>Pay with M-Pesa Send Money</h2>
+      <div class="amount">${formatKES(order.total)}</div>
+      ${message}
+      <div class="copy-row">
+        <span>Send to <strong>${escapeHtml(display)}</strong></span>
+        <button type="button" class="btn btn-outline btn-small" data-copy="${escapeHtml(number)}">Copy number</button>
+      </div>
+      <div class="copy-row">
+        <span>Amount <strong>${formatKES(order.total)}</strong></span>
+        <button type="button" class="btn btn-outline btn-small" data-copy="${order.total}">Copy amount</button>
+      </div>
+      <ol class="mpesa-steps">
+        <li>Open <strong>M-Pesa</strong> on your phone (SIM Toolkit or the M-PESA app).</li>
+        <li>Choose <strong>Send Money</strong> and enter <strong>${escapeHtml(display)}</strong>.</li>
+        <li>Enter the amount <strong>${formatKES(order.total)}</strong> and your PIN.</li>
+        <li>Copy the code from the M-Pesa SMS (e.g. <strong>SKL3X2ABCD</strong>) and enter it below.</li>
+      </ol>
+      <form id="code-form" class="form-grid">
+        <div class="field">
+          <label for="mpesa-code">M-Pesa confirmation code</label>
+          <input id="mpesa-code" autocomplete="off" autocapitalize="characters" maxlength="12" placeholder="SKL3X2ABCD" required>
+        </div>
+        <button class="btn btn-primary btn-block" type="submit">I've paid: send code</button>
+      </form>
+      <p class="summary-note">Stuck? <a href="${help}" data-whatsapp="Hi Olive Caps, I need help paying for order ${escapeHtml(order.orderNumber)}.">Ask us on WhatsApp</a>.</p>
+    </section>`;
+}
+
+function confirmWait() {
+  return `
+    <section class="panel pay-box" aria-live="polite">
+      <div class="spinner"></div>
+      <h2>Checking your payment</h2>
+      <p>We've received your M-Pesa code <strong>${escapeHtml(order.payment.reference)}</strong>.</p>
+      <p>We'll confirm it shortly and this page will update by itself. You can close it; we'll contact you on your phone.</p>
+    </section>`;
+}
+
+function sendMoneyArea() {
+  const status = order.payment.status;
+  if (status === "paid") return paid();
+  if (status === "awaiting_confirmation") return confirmWait();
+  if (status === "underpaid") {
+    return `<p class="notice notice-error">We received ${formatKES(order.payment.amountReceived)}, less than the total. Please contact us on WhatsApp.</p>`;
+  }
+  if (status === "rejected") {
+    return sendMoneyBox(`<p class="notice notice-error">${escapeHtml(order.payment.failureReason || "We couldn't find that payment.")}</p>`);
+  }
+  return sendMoneyBox();
+}
+
 function payArea() {
   const status = order.payment.status;
+  if (order.payment.type === "sendMoney") return sendMoneyArea();
   if (status === "paid") return paid();
   if (status === "pending") return waiting();
   if (status === "failed") {
@@ -108,6 +168,49 @@ function payArea() {
 function render() {
   view.innerHTML = `<div id="pay-area">${order.status === "cancelled" ? "" : payArea()}</div>${orderDetails()}`;
 }
+
+// While we check a Send Money code, look for the result every 15 seconds.
+function pollConfirmation() {
+  clearTimeout(pollTimer);
+  pollTimer = setTimeout(async () => {
+    try {
+      order = await getOrder(orderNumber);
+      if (order.payment.status !== "awaiting_confirmation") {
+        render();
+        return;
+      }
+    } catch {
+      // Network blip: try again.
+    }
+    pollConfirmation();
+  }, 15000);
+}
+
+view.addEventListener("click", async (event) => {
+  const button = event.target.closest("[data-copy]");
+  if (!button) return;
+  try {
+    await navigator.clipboard.writeText(button.dataset.copy);
+    showToast("Copied");
+  } catch {
+    showToast(button.dataset.copy);
+  }
+});
+
+view.addEventListener("submit", async (event) => {
+  if (event.target.id !== "code-form") return;
+  event.preventDefault();
+  const button = event.target.querySelector("button");
+  button.disabled = true;
+  button.textContent = "Sending...";
+  try {
+    order = await submitMpesaCode(orderNumber, event.target.querySelector("#mpesa-code").value);
+    render();
+    pollConfirmation();
+  } catch (err) {
+    view.querySelector("#pay-area").innerHTML = sendMoneyBox(`<p class="notice notice-error">${escapeHtml(err.message)}</p>`);
+  }
+});
 
 // Checks every 4 seconds for up to 2 minutes while waiting for M-Pesa.
 function pollPayment(triesLeft = 30) {
@@ -160,9 +263,11 @@ async function init() {
     ]);
     order = loaded;
     testMode = health.mpesa === "mock";
+    shop = settings;
     applyShopSettings(settings);
     render();
     if (order.payment.status === "pending") pollPayment();
+    if (order.payment.status === "awaiting_confirmation") pollConfirmation();
   } catch (err) {
     view.innerHTML = `<p class="notice notice-error">${escapeHtml(err.message)}</p>`;
   }
