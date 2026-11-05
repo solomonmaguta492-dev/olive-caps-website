@@ -1353,3 +1353,37 @@ legend {
 .social-tiktok i {
   text-shadow: -1.5px -1.5px 0 #25f4ee, 1.5px 1.5px 0 #fe2c55;
 }
+
+/* Send Money */
+.copy-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  padding: 0.6rem 0.8rem;
+  margin-bottom: 0.6rem;
+  border-radius: var(--radius-sm);
+  background: var(--olive-light);
+  text-align: left;
+}
+
+.status-awaiting_confirmation {
+  background: #fff4dc;
+  color: var(--warning);
+}
+
+.status-rejected {
+  background: #fdecea;
+  color: var(--danger);
+}
+
+.review-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+}
+
+.stat-alert {
+  outline: 2px solid var(--mustard);
+}
