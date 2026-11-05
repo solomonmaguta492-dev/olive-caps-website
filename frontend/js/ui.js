@@ -66,6 +66,14 @@ export function applyShopSettings(settings) {
     el.textContent = settings.email;
     el.href = "mailto:" + settings.email;
   });
+  if (settings.instagram) {
+    document.querySelectorAll("[data-shop-instagram]").forEach((el) => {
+      el.href = `https://www.instagram.com/${settings.instagram}/`;
+      // Footer links keep their icon and only update the text beside it.
+      const label = el.querySelector("[data-ig-text]") || el;
+      label.textContent = label.textContent.includes("Instagram:") ? `Instagram: @${settings.instagram}` : `@${settings.instagram}`;
+    });
+  }
   document.querySelectorAll("[data-year]").forEach((el) => {
     el.textContent = new Date().getFullYear();
   });
