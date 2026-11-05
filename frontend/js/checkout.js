@@ -1,4 +1,4 @@
-import { getSettings, createOrder } from "./api.js";
+import { getSettings, createOrder, startMpesaPayment } from "./api.js";
 import { getCart, setQuantity, removeFromCart, clearCart } from "./cart.js";
 import { formatKES, escapeHtml, applyShopSettings, whatsappLink } from "./ui.js";
 
@@ -145,6 +145,7 @@ function validate() {
     markField(form.name, form.name.value.trim().length >= 2),
     markField(form.phone, /^(?:254|0)?[17]\d{8}$/.test(phoneDigits)),
     markField(form.email, !form.email.value || form.email.checkValidity()),
+    markField(form.mpesaPhone, !form.mpesaPhone.value.trim() || /^(?:254|0)?[17]\d{8}$/.test(form.mpesaPhone.value.replace(/\D/g, ""))),
   ];
   if (selectedMethod() === "delivery") {
     checks.push(markField(form.county, form.county.value.trim() !== ""));
@@ -195,11 +196,21 @@ form.addEventListener("submit", async (event) => {
   try {
     const order = await createOrder(buildOrder());
     clearCart();
-    window.location.href = `order.html?no=${encodeURIComponent(order.orderNumber)}`;
+
+    // Send the M-Pesa prompt straight away, to the M-Pesa number or the phone number.
+    submitButton.textContent = "Sending M-Pesa prompt...";
+    const payPhone = form.mpesaPhone.value.trim() || form.phone.value;
+    let next = `order.html?no=${encodeURIComponent(order.orderNumber)}`;
+    try {
+      await startMpesaPayment(order.orderNumber, payPhone);
+    } catch {
+      next += "&prompt=failed";
+    }
+    window.location.href = next;
   } catch (err) {
     showError(err.message);
     submitButton.disabled = false;
-    submitButton.textContent = "Place order";
+    submitButton.textContent = "Place order & pay with M-Pesa";
   }
 });
 
