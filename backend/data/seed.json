@@ -16,7 +16,7 @@
       "New Era",
       "Baseball Caps",
       "Trucker Hats",
-      "Snapbacks",
+      "Durags",
       "Beanies",
       "Skull Caps",
       "Bucket Hats"
@@ -608,6 +608,35 @@
       "stock": 40
     },
     {
+      "id": "p005",
+      "name": "Flat Brim Snapback",
+      "category": "Baseball Caps",
+      "price": 1200,
+      "wholesalePrice": 880,
+      "description": "Structured six-panel snapback with a flat brim and adjustable snap closure.",
+      "colours": [
+        "Black",
+        "Grey",
+        "Olive"
+      ],
+      "image": "images/snapback.svg",
+      "stock": 30
+    },
+    {
+      "id": "p006",
+      "name": "Street Snapback",
+      "category": "Baseball Caps",
+      "price": 1300,
+      "wholesalePrice": 950,
+      "description": "Wool-blend snapback with a green under-brim.",
+      "colours": [
+        "Navy",
+        "Maroon"
+      ],
+      "image": "images/snapback.svg",
+      "stock": 0
+    },
+    {
       "id": "p036",
       "name": "Feature Lightning Trucker, Brights",
       "category": "Trucker Hats",
@@ -777,35 +806,6 @@
       ],
       "image": "images/trucker-hat.svg",
       "stock": 4
-    },
-    {
-      "id": "p005",
-      "name": "Flat Brim Snapback",
-      "category": "Snapbacks",
-      "price": 1200,
-      "wholesalePrice": 880,
-      "description": "Structured six-panel snapback with a flat brim and adjustable snap closure.",
-      "colours": [
-        "Black",
-        "Grey",
-        "Olive"
-      ],
-      "image": "images/snapback.svg",
-      "stock": 30
-    },
-    {
-      "id": "p006",
-      "name": "Street Snapback",
-      "category": "Snapbacks",
-      "price": 1300,
-      "wholesalePrice": 950,
-      "description": "Wool-blend snapback with a green under-brim.",
-      "colours": [
-        "Navy",
-        "Maroon"
-      ],
-      "image": "images/snapback.svg",
-      "stock": 0
     },
     {
       "id": "p046",
