@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { readDb, updateDb } from "../db.js";
 import { priceOrder, normalisePhone } from "../utils/pricing.js";
-import { createOrderNumber } from "../services/orders.js";
+import { createOrderNumber, checkPendingPayment } from "../services/orders.js";
 
 const router = Router();
 
@@ -109,9 +109,13 @@ router.post("/", (req, res) => {
   }
 });
 
-router.get("/:orderNumber", (req, res) => {
-  const order = readDb().orders.find((o) => o.orderNumber === req.params.orderNumber);
-  if (!order) return res.status(404).json({ error: "Order not found" });
+router.get("/:orderNumber", async (req, res) => {
+  const { orderNumber } = req.params;
+  if (!readDb().orders.some((o) => o.orderNumber === orderNumber)) {
+    return res.status(404).json({ error: "Order not found" });
+  }
+  await checkPendingPayment(orderNumber);
+  const order = readDb().orders.find((o) => o.orderNumber === orderNumber);
   res.json(publicOrder(order));
 });
 
