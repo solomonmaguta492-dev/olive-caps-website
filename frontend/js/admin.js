@@ -174,6 +174,7 @@ function editProduct(product) {
   productForm.sizes.value = (product.sizes || []).join(", ");
   productForm.imageBack.value = product.imageBack || "";
   productForm.imageBackLabel.value = product.imageBackLabel || "";
+  productForm.gallery.value = (product.gallery || []).join(", ");
   productForm.image.value = product.image;
   productForm.description.value = product.description;
   document.getElementById("product-form-title").textContent = `Edit ${product.name}`;
