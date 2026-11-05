@@ -97,6 +97,28 @@ async function loadOrders() {
 orderFilter.addEventListener("change", renderOrders);
 document.getElementById("refresh-orders").addEventListener("click", loadOrders);
 
+// Downloads the sales report as an Excel file.
+document.querySelectorAll("[data-excel]").forEach((button) => {
+  button.addEventListener("click", async () => {
+    const label = button.textContent;
+    button.disabled = true;
+    button.textContent = "Preparing...";
+    try {
+      const { blob, name } = await admin.salesExcel(password, button.dataset.excel);
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = name;
+      link.click();
+      setTimeout(() => URL.revokeObjectURL(link.href), 1000);
+    } catch (err) {
+      showToast(err.message);
+    } finally {
+      button.disabled = false;
+      button.textContent = label;
+    }
+  });
+});
+
 ordersBody.addEventListener("change", async (event) => {
   const select = event.target.closest("[data-order]");
   if (!select) return;
