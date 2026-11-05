@@ -3,6 +3,7 @@ import { readDb, updateDb } from "../db.js";
 import { normalisePhone } from "../utils/pricing.js";
 import { sendStkPush, parseCallback, mockCallback, mpesaMode } from "../services/mpesa.js";
 import { recordPaymentResult } from "../services/orders.js";
+import { paymentMethods } from "../services/payments.js";
 
 const router = Router();
 
@@ -13,6 +14,10 @@ router.post("/stkpush", async (req, res) => {
   if (order.payment.status === "paid") return res.status(400).json({ error: "This order is already paid" });
   if (order.status === "cancelled") return res.status(400).json({ error: "This order was cancelled" });
 
+  if (!paymentMethods(readDb().settings).includes("stk")) {
+    return res.status(400).json({ error: "The M-Pesa prompt isn't available yet. Please use Send Money." });
+  }
+
   const phone = normalisePhone(req.body.phone || order.customer.phone);
   if (!phone) return res.status(400).json({ error: "Please enter a valid Safaricom number" });
 
@@ -22,6 +27,8 @@ router.post("/stkpush", async (req, res) => {
     updateDb((db) => {
       const o = db.orders.find((x) => x.orderNumber === order.orderNumber);
       o.payment.status = "pending";
+      o.payment.type = "stk";
+      o.payment.method = "M-Pesa prompt";
       o.payment.checkoutRequestId = result.checkoutRequestId;
       o.payment.requestedAt = new Date().toISOString();
       o.payment.lastQueryAt = undefined;
