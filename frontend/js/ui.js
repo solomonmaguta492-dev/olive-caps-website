@@ -74,6 +74,13 @@ export function applyShopSettings(settings) {
       if (label) label.textContent = `@${settings.instagram}`;
     });
   }
+  if (settings.tiktok) {
+    document.querySelectorAll("[data-shop-tiktok]").forEach((el) => {
+      el.href = `https://www.tiktok.com/@${settings.tiktok}`;
+      const label = el.querySelector("[data-tt-text]");
+      if (label) label.textContent = `@${settings.tiktok}`;
+    });
+  }
   document.querySelectorAll("[data-year]").forEach((el) => {
     el.textContent = new Date().getFullYear();
   });
