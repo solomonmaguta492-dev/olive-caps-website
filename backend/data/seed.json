@@ -579,64 +579,6 @@
       "stock": 27
     },
     {
-      "id": "p001",
-      "name": "Classic Olive Baseball Cap",
-      "category": "Baseball Caps",
-      "price": 900,
-      "wholesalePrice": 650,
-      "description": "Cotton twill cap with a curved brim and adjustable strap. Our signature colour.",
-      "colours": [
-        "Olive",
-        "Black",
-        "Beige"
-      ],
-      "image": "images/baseball-cap.svg",
-      "stock": 25
-    },
-    {
-      "id": "p002",
-      "name": "Everyday Black Baseball Cap",
-      "category": "Baseball Caps",
-      "price": 850,
-      "wholesalePrice": 600,
-      "description": "Plain black cap that goes with everything. Breathable cotton, one size fits most.",
-      "colours": [
-        "Black",
-        "Navy"
-      ],
-      "image": "images/baseball-cap.svg",
-      "stock": 40
-    },
-    {
-      "id": "p005",
-      "name": "Flat Brim Snapback",
-      "category": "Baseball Caps",
-      "price": 1200,
-      "wholesalePrice": 880,
-      "description": "Structured six-panel snapback with a flat brim and adjustable snap closure.",
-      "colours": [
-        "Black",
-        "Grey",
-        "Olive"
-      ],
-      "image": "images/snapback.svg",
-      "stock": 30
-    },
-    {
-      "id": "p006",
-      "name": "Street Snapback",
-      "category": "Baseball Caps",
-      "price": 1300,
-      "wholesalePrice": 950,
-      "description": "Wool-blend snapback with a green under-brim.",
-      "colours": [
-        "Navy",
-        "Maroon"
-      ],
-      "image": "images/snapback.svg",
-      "stock": 0
-    },
-    {
       "id": "p036",
       "name": "Feature Lightning Trucker, Brights",
       "category": "Trucker Hats",
