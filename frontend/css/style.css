@@ -1343,3 +1343,13 @@ legend {
 .contact-list .social-link {
   gap: 0.6rem;
 }
+
+/* TikTok: black with the cyan and pink edge from the app */
+.social-tiktok {
+  background: #010101;
+  color: #fff;
+}
+
+.social-tiktok i {
+  text-shadow: -1.5px -1.5px 0 #25f4ee, 1.5px 1.5px 0 #fe2c55;
+}
