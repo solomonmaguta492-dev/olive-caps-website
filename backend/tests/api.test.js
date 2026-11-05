@@ -12,7 +12,7 @@ process.env.MPESA_MODE = "mock";
 
 const { createApp } = await import("../server.js");
 const { mockCallback } = await import("../services/mpesa.js");
-const { readDb } = await import("../db.js");
+const { readDb, updateDb } = await import("../db.js");
 
 let server;
 let base;
@@ -38,7 +38,7 @@ function post(path, body, headers = {}) {
 
 const goodOrder = {
   customer: { name: "Jane Wanjiku", phone: "0712345678", email: "" },
-  items: [{ productId: "p001", colour: "Olive", quantity: 2 }],
+  items: [{ productId: "p029", colour: "Black", quantity: 2 }],
   fulfilment: { method: "pickup", pickupPointId: "cbd-moi-avenue" },
 };
 
@@ -60,7 +60,7 @@ test("creates an order with server-side totals", async () => {
   assert.equal(res.status, 201);
   const order = await res.json();
   assert.match(order.orderNumber, /^OC-\d{8}-\d{4}$/);
-  assert.equal(order.total, 1800);
+  assert.equal(order.total, 3000);
   assert.equal(order.payment.status, "unpaid");
 });
 
@@ -78,13 +78,16 @@ test("rejects delivery without an address", async () => {
 });
 
 test("rejects a sold-out product", async () => {
-  const res = await post("/api/orders", { ...goodOrder, items: [{ productId: "p006", colour: "Navy", quantity: 1 }] });
+  updateDb((db) => {
+    db.products.find((p) => p.id === "p042").stock = 0;
+  });
+  const res = await post("/api/orders", { ...goodOrder, items: [{ productId: "p042", colour: "Black", quantity: 1 }] });
   assert.equal(res.status, 400);
 });
 
 test("paid callback marks the order paid and reduces stock once", async () => {
   const order = await (await post("/api/orders", goodOrder)).json();
-  const stockBefore = readDb().products.find((p) => p.id === "p001").stock;
+  const stockBefore = readDb().products.find((p) => p.id === "p029").stock;
 
   const push = await post("/api/mpesa/stkpush", { orderNumber: order.orderNumber });
   assert.equal(push.status, 200);
@@ -98,7 +101,7 @@ test("paid callback marks the order paid and reduces stock once", async () => {
   assert.equal(updated.payment.status, "paid");
   assert.equal(updated.status, "processing");
 
-  const stockAfter = readDb().products.find((p) => p.id === "p001").stock;
+  const stockAfter = readDb().products.find((p) => p.id === "p029").stock;
   assert.equal(stockAfter, stockBefore - 2);
 });
 
