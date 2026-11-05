@@ -1,7 +1,4 @@
-/*
-  One row per sale, used by the CSV download and the Google Sheet.
-  Keep SALES_HEADERS and the Apps Script in the same order.
-*/
+// One row per sale, used by the Excel report.
 export const SALES_HEADERS = [
   "Date",
   "Order number",
@@ -51,15 +48,4 @@ export function saleRow(order) {
     place,
     order.status,
   ];
-}
-
-// Quotes every cell so commas and line breaks in names or addresses are safe.
-function csvCell(value) {
-  return `"${String(value ?? "").replace(/"/g, '""')}"`;
-}
-
-export function salesCsv(orders) {
-  const lines = [SALES_HEADERS, ...orders.map(saleRow)].map((row) => row.map(csvCell).join(","));
-  // The BOM tells Excel the file is UTF-8, so names with accents show correctly.
-  return "﻿" + lines.join("\r\n");
 }
