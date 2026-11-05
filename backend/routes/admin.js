@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { readDb, updateDb } from "../db.js";
 import { adminAuth } from "../middleware/adminAuth.js";
+import { reviewManualPayment } from "../services/orders.js";
 
 const router = Router();
 router.use(adminAuth);
@@ -29,6 +30,16 @@ router.patch("/orders/:orderNumber", (req, res) => {
   });
   if (!order) return res.status(404).json({ error: "Order not found" });
   res.json(order);
+});
+
+// PATCH /api/admin/orders/:orderNumber/payment { action: "confirm" | "reject", amount }
+router.patch("/orders/:orderNumber/payment", (req, res) => {
+  try {
+    res.json(reviewManualPayment(req.params.orderNumber, req.body.action, req.body.amount));
+  } catch (err) {
+    const status = err.message === "Order not found" ? 404 : 400;
+    res.status(status).json({ error: err.message });
+  }
 });
 
 function productFromBody(body, categories) {
