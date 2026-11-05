@@ -10,6 +10,9 @@ services:
     envVars:
       - key: NODE_VERSION
         value: "22"
+      # Live site: test (mock) payments are switched off.
+      - key: NODE_ENV
+        value: production
       - key: ADMIN_PASSWORD
         generateValue: true
       - key: MPESA_MODE
