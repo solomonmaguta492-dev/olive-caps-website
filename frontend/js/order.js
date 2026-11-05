@@ -2,7 +2,9 @@ import { getOrder, getSettings, startMpesaPayment, getHealth } from "./api.js";
 import { formatKES, escapeHtml, applyShopSettings, statusText } from "./ui.js";
 
 const view = document.getElementById("order-view");
-const orderNumber = new URLSearchParams(window.location.search).get("no");
+const params = new URLSearchParams(window.location.search);
+const orderNumber = params.get("no");
+const promptFailed = params.get("prompt") === "failed";
 
 let order = null;
 let pollTimer = null;
@@ -96,6 +98,9 @@ function payArea() {
   }
   if (status === "underpaid") {
     return `<p class="notice notice-error">We received ${formatKES(order.payment.amountReceived)}, less than the total. Please contact us on WhatsApp.</p>`;
+  }
+  if (promptFailed) {
+    return payForm(`<p class="notice notice-error">Your order is saved, but we couldn't send the M-Pesa prompt. Check the number and tap the button to try again.</p>`);
   }
   return payForm();
 }
