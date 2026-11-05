@@ -23,6 +23,8 @@ router.post("/stkpush", async (req, res) => {
       const o = db.orders.find((x) => x.orderNumber === order.orderNumber);
       o.payment.status = "pending";
       o.payment.checkoutRequestId = result.checkoutRequestId;
+      o.payment.requestedAt = new Date().toISOString();
+      o.payment.lastQueryAt = undefined;
       o.payment.failureReason = undefined;
       o.updatedAt = new Date().toISOString();
     });
