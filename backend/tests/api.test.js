@@ -190,3 +190,8 @@ test("Skull Caps category lists the 7 skull caps", async () => {
   const caps = await (await fetch(`${base}/api/products?category=Skull%20Caps`)).json();
   assert.deepEqual(caps.map((p) => p.id), ["p069", "p070", "p071", "p072", "p073", "p074", "p075"]);
 });
+
+test("Durags category lists the silky and velvet durags", async () => {
+  const caps = await (await fetch(`${base}/api/products?category=Durags`)).json();
+  assert.deepEqual(caps.map((p) => p.id), ["p076", "p077"]);
+});
