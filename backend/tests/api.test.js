@@ -183,3 +183,10 @@ test("Bucket Hats category includes the 10 new hats", async () => {
   const ids = caps.map((p) => p.id);
   for (let n = 59; n <= 68; n++) assert.ok(ids.includes(`p0${n}`));
 });
+
+test("Skull Caps category lists the 7 skull caps", async () => {
+  const settings = await (await fetch(`${base}/api/settings`)).json();
+  assert.ok(settings.categories.includes("Skull Caps"));
+  const caps = await (await fetch(`${base}/api/products?category=Skull%20Caps`)).json();
+  assert.deepEqual(caps.map((p) => p.id), ["p069", "p070", "p071", "p072", "p073", "p074", "p075"]);
+});
