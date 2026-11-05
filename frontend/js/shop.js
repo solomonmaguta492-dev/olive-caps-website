@@ -30,6 +30,14 @@ function sizeSelect(product, soldOut) {
     </select>`;
 }
 
+// Caps with several photos get a button that steps through them.
+function galleryButton(product) {
+  const photos = [product.image, ...(product.gallery || [])];
+  if (photos.length < 2) return "";
+  return `<button type="button" class="view-toggle" data-gallery="${escapeHtml(photos.join("|"))}" data-index="0"
+    aria-label="Next photo">Photo 1 of ${photos.length} ›</button>`;
+}
+
 function productCard(product) {
   const sizes = product.sizes || [];
   const stock = stockLabel(product.stock);
@@ -45,6 +53,7 @@ function productCard(product) {
         <img src="${escapeHtml(product.image)}" alt="${escapeHtml(product.name)}" loading="lazy" width="400" height="300"
           ${product.imageBack ? `data-front="${escapeHtml(product.image)}" data-back="${escapeHtml(product.imageBack)}"` : ""}>
         ${product.imageBack ? `<button type="button" class="view-toggle" data-flip data-label="${escapeHtml(product.imageBackLabel || "Back view")}">${escapeHtml(product.imageBackLabel || "Back view")}</button>` : ""}
+        ${galleryButton(product)}
       </div>
       <div class="product-body">
         <span class="product-category">${escapeHtml(product.category)}</span>
@@ -122,6 +131,16 @@ searchInput.addEventListener("input", () => {
     state.search = searchInput.value;
     update();
   }, 200);
+});
+
+grid.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-gallery]");
+  if (!button) return;
+  const photos = button.dataset.gallery.split("|");
+  const next = (Number(button.dataset.index) + 1) % photos.length;
+  button.dataset.index = next;
+  button.parentElement.querySelector("img").src = photos[next];
+  button.textContent = `Photo ${next + 1} of ${photos.length} ›`;
 });
 
 // Switches between front and back photos when a cap has both.
