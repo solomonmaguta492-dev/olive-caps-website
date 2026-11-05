@@ -39,6 +39,41 @@ async function getAccessToken(baseUrl) {
 }
 
 /*
+  Asks Daraja whether an STK push was paid. This confirms payments
+  even when Safaricom can't reach our callback URL (e.g. on localhost).
+*/
+export async function queryStkStatus(checkoutRequestId) {
+  const mode = mpesaMode();
+  const baseUrl = BASE_URLS[mode];
+  if (!baseUrl) return null;
+
+  const { MPESA_SHORTCODE, MPESA_PASSKEY } = process.env;
+  const token = await getAccessToken(baseUrl);
+  const timestamp = darajaTimestamp();
+  const password = Buffer.from(`${MPESA_SHORTCODE}${MPESA_PASSKEY}${timestamp}`).toString("base64");
+
+  const res = await fetch(`${baseUrl}/mpesa/stkpushquery/v1/query`, {
+    method: "POST",
+    headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+    body: JSON.stringify({
+      BusinessShortCode: MPESA_SHORTCODE,
+      Password: password,
+      Timestamp: timestamp,
+      CheckoutRequestID: checkoutRequestId,
+    }),
+  });
+  const data = await res.json().catch(() => ({}));
+  return parseQueryResult(data);
+}
+
+// While the customer hasn't answered yet, Daraja returns an error with no ResultCode.
+export function parseQueryResult(data) {
+  if (data?.ResultCode === undefined || data?.ResultCode === null) return { done: false };
+  const code = Number(data.ResultCode);
+  return { done: true, success: code === 0, resultCode: code, resultDesc: data.ResultDesc };
+}
+
+/*
   Sends the PIN prompt to the customer's phone.
   Returns the CheckoutRequestID that the callback will refer to.
 */
