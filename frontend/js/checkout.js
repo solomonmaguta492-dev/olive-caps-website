@@ -112,6 +112,7 @@ function toggleMethod() {
 
 form.addEventListener("change", (event) => {
   if (event.target.name === "method") toggleMethod();
+  if (event.target.name === "paymentMethod") togglePayment();
   if (event.target.name === "zoneId") renderTotals();
 });
 
@@ -160,6 +161,37 @@ function showError(message) {
   formError.classList.toggle("hidden", !message);
 }
 
+// Ways to pay come from the shop settings: Send Money, and the prompt when it's set up.
+function renderPaymentOptions() {
+  const methods = settings?.paymentMethods?.length ? settings.paymentMethods : ["sendMoney"];
+  const number = settings?.sendMoney?.displayNumber || "our M-Pesa number";
+  const labels = {
+    sendMoney: ["M-Pesa Send Money", `Send to ${number}, then enter the code from your SMS`],
+    stk: ["M-Pesa prompt", settings?.mpesaTestMode ? "Test mode: approved automatically" : "A PIN prompt pops up on your phone"],
+  };
+  document.getElementById("payment-options").innerHTML = methods
+    .map(
+      (m, i) => `
+      <label class="choice">
+        <input type="radio" name="paymentMethod" value="${m}" ${i === 0 ? "checked" : ""}>
+        <span><strong>${labels[m][0]}</strong><small>${escapeHtml(labels[m][1])}</small></span>
+      </label>`
+    )
+    .join("");
+  togglePayment();
+}
+
+function selectedPayment() {
+  return form.querySelector("input[name=paymentMethod]:checked")?.value || "sendMoney";
+}
+
+// The M-Pesa number field is only needed for the automatic prompt.
+function togglePayment() {
+  const stk = selectedPayment() === "stk";
+  document.getElementById("mpesaPhone-field").classList.toggle("hidden", !stk);
+  submitButton.textContent = stk ? "Place order & pay with M-Pesa" : "Place order";
+}
+
 function buildOrder() {
   const method = selectedMethod();
   const fulfilment =
@@ -178,6 +210,7 @@ function buildOrder() {
     items: getCart().map(({ productId, colour, size, quantity }) => ({ productId, colour, size, quantity })),
     fulfilment,
     notes: form.notes.value,
+    paymentMethod: selectedPayment(),
   };
 }
 
@@ -197,20 +230,23 @@ form.addEventListener("submit", async (event) => {
     const order = await createOrder(buildOrder());
     clearCart();
 
-    // Send the M-Pesa prompt straight away, to the M-Pesa number or the phone number.
-    submitButton.textContent = "Sending M-Pesa prompt...";
-    const payPhone = form.mpesaPhone.value.trim() || form.phone.value;
     let next = `order.html?no=${encodeURIComponent(order.orderNumber)}`;
-    try {
-      await startMpesaPayment(order.orderNumber, payPhone);
-    } catch {
-      next += "&prompt=failed";
+
+    // With the prompt, send it straight away to the M-Pesa number or the phone number.
+    if (selectedPayment() === "stk") {
+      submitButton.textContent = "Sending M-Pesa prompt...";
+      const payPhone = form.mpesaPhone.value.trim() || form.phone.value;
+      try {
+        await startMpesaPayment(order.orderNumber, payPhone);
+      } catch {
+        next += "&prompt=failed";
+      }
     }
     window.location.href = next;
   } catch (err) {
     showError(err.message);
     submitButton.disabled = false;
-    submitButton.textContent = "Place order & pay with M-Pesa";
+    togglePayment();
   }
 });
 
@@ -221,6 +257,7 @@ async function init() {
     applyShopSettings(settings);
     document.getElementById("wholesale-min").textContent = settings.wholesale.minQuantity;
     fillDeliveryOptions();
+    renderPaymentOptions();
     toggleMethod();
     renderItems();
   } catch {
