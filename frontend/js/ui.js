@@ -78,7 +78,7 @@ export function applyShopSettings(settings) {
     document.querySelectorAll("[data-shop-tiktok]").forEach((el) => {
       el.href = `https://www.tiktok.com/@${settings.tiktok}`;
       const label = el.querySelector("[data-tt-text]");
-      if (label) label.textContent = `@${settings.tiktok}`;
+      if (label) label.textContent = settings.tiktokName || `@${settings.tiktok}`;
     });
   }
   document.querySelectorAll("[data-year]").forEach((el) => {
