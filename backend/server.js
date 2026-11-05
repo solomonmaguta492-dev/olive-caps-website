@@ -40,5 +40,12 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const port = process.env.PORT || 3000;
   createApp().listen(port, () => {
     console.log(`Olive Caps running on http://localhost:${port} (M-Pesa: ${mpesaMode()})`);
+    if (mpesaMode() === "mock") {
+      console.log("M-Pesa is in test mode: no real prompts are sent. See docs/MPESA-SETUP.md to switch.");
+    } else {
+      const needed = ["MPESA_CONSUMER_KEY", "MPESA_CONSUMER_SECRET", "MPESA_SHORTCODE", "MPESA_PASSKEY", "MPESA_CALLBACK_URL"];
+      const missing = needed.filter((name) => !process.env[name]);
+      if (missing.length) console.warn(`M-Pesa will not work until you set these in backend/.env: ${missing.join(", ")}`);
+    }
   });
 }
