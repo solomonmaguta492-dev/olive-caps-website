@@ -1307,3 +1307,32 @@ legend {
   height: 24px;
   border-radius: 6px;
 }
+
+/* Contact us list: small coloured icon before each link */
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.mini-icon {
+  width: 28px;
+  height: 28px;
+  flex: 0 0 28px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 0.9rem;
+}
+
+.contact-list .social-icon-img {
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+}
+
+.contact-list .social-link {
+  gap: 0.6rem;
+}
