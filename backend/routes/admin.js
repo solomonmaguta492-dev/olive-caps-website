@@ -72,6 +72,7 @@ function productFromBody(body, categories) {
     sizes,
     imageBack: String(body.imageBack || "").trim() || undefined,
     imageBackLabel: String(body.imageBackLabel || "").trim() || undefined,
+    gallery: toList(body.gallery).length ? toList(body.gallery) : undefined,
     image: String(body.image || "images/baseball-cap.svg").trim(),
     stock,
     active: body.active !== false,
