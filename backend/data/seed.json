@@ -808,6 +808,45 @@
       "stock": 4
     },
     {
+      "id": "p076",
+      "name": "Silky Durag",
+      "category": "Durags",
+      "price": 500,
+      "wholesalePrice": 350,
+      "description": "Smooth, shiny silky durag with long tails and wide straps. Keeps waves and braids neat and stops frizz while you sleep.",
+      "colours": [
+        "Black",
+        "Royal Blue",
+        "Silver",
+        "Blue Camo",
+        "Green Camo",
+        "Grey Camo"
+      ],
+      "image": "images/durags/silky-durags.webp",
+      "gallery": [
+        "images/durags/silky-durag-black.webp"
+      ],
+      "stock": 60
+    },
+    {
+      "id": "p077",
+      "name": "Velvet Durag",
+      "category": "Durags",
+      "price": 700,
+      "wholesalePrice": 500,
+      "description": "Soft, rich velvet durag with long tails. Warm, comfortable and holds your waves in place.",
+      "colours": [
+        "Black",
+        "Purple",
+        "Red",
+        "Grey",
+        "Green",
+        "Navy"
+      ],
+      "image": "images/durags/velvet-durags.webp",
+      "stock": 48
+    },
+    {
       "id": "p046",
       "name": "Feature Patch Beanie",
       "category": "Beanies",
