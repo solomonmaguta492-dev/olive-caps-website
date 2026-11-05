@@ -1289,7 +1289,14 @@ legend {
 }
 
 .social-email {
-  background: #ea4335;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.social-email img {
+  width: 100%;
+  height: 100%;
 }
 
 .social-instagram {
