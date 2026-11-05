@@ -58,4 +58,11 @@ export const admin = {
   setStock: (pw, id, stock) =>
     adminRequest(`/api/admin/products/${id}/stock`, pw, { method: "PATCH", body: JSON.stringify({ stock }) }),
   deleteProduct: (pw, id) => adminRequest(`/api/admin/products/${id}`, pw, { method: "DELETE" }),
+  // Excel files are downloaded as a blob instead of read as JSON.
+  salesExcel: async (pw, scope) => {
+    const res = await fetch(`${API_BASE}/api/admin/sales.xlsx?scope=${scope}`, { headers: { "x-admin-password": pw } });
+    if (!res.ok) throw new Error("Couldn't create the Excel file. Please log in again.");
+    const name = /filename="([^"]+)"/.exec(res.headers.get("Content-Disposition") || "")?.[1] || "olive-caps-sales.xlsx";
+    return { blob: await res.blob(), name };
+  },
 };
