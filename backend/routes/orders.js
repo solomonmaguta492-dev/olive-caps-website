@@ -1,7 +1,8 @@
 import { Router } from "express";
 import { readDb, updateDb } from "../db.js";
 import { priceOrder, normalisePhone } from "../utils/pricing.js";
-import { createOrderNumber, checkPendingPayment } from "../services/orders.js";
+import { createOrderNumber, checkPendingPayment, submitMpesaCode } from "../services/orders.js";
+import { paymentMethods, normaliseMpesaCode } from "../services/payments.js";
 
 const router = Router();
 
@@ -60,6 +61,7 @@ export function publicOrder(order) {
       place: order.fulfilment.pickupPoint || `${order.fulfilment.town}, ${order.fulfilment.county}`,
     },
     payment: {
+      type: order.payment.type || "stk",
       method: order.payment.method,
       status: order.payment.status,
       reference: order.payment.reference,
@@ -77,6 +79,9 @@ router.post("/", (req, res) => {
       const customer = validateCustomer(req.body.customer);
       const fulfilment = validateFulfilment(req.body.fulfilment, db.settings);
       const priced = priceOrder(req.body.items, db.products, db.settings, fulfilment);
+      const available = paymentMethods(db.settings);
+      const type = req.body.paymentMethod || available[0];
+      if (!available.includes(type)) throw new Error("Please choose a way to pay");
       const now = new Date().toISOString();
 
       const newOrder = {
@@ -92,7 +97,8 @@ router.post("/", (req, res) => {
         fulfilment,
         notes: clean(req.body.notes, 300),
         payment: {
-          method: "M-Pesa",
+          type,
+          method: type === "sendMoney" ? "M-Pesa Send Money" : "M-Pesa prompt",
           status: "unpaid",
           reference: null,
           amountReceived: 0,
@@ -106,6 +112,18 @@ router.post("/", (req, res) => {
     res.status(201).json(publicOrder(order));
   } catch (err) {
     res.status(400).json({ error: err.message });
+  }
+});
+
+// POST /api/orders/:orderNumber/mpesa-code { code }: Send Money confirmation code.
+router.post("/:orderNumber/mpesa-code", (req, res) => {
+  const code = normaliseMpesaCode(req.body.code);
+  if (!code) return res.status(400).json({ error: "Enter the 10-character M-Pesa code from your SMS, e.g. SKL3X2ABCD" });
+  try {
+    res.json(publicOrder(submitMpesaCode(req.params.orderNumber, code)));
+  } catch (err) {
+    const status = err.message === "Order not found" ? 404 : 400;
+    res.status(status).json({ error: err.message });
   }
 });
 
