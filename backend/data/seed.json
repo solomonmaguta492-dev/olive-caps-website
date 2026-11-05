@@ -784,13 +784,11 @@
       "category": "Trucker Hats",
       "price": 1000,
       "wholesalePrice": 720,
-      "description": "Foam front with breathable mesh back and snap closure. Cool in the Nairobi heat.",
+      "description": "White foam front with a black DOPE drip print, black brim and breathable mesh back. Snap closure.",
       "colours": [
-        "White/Olive",
-        "Black/Black",
-        "Navy/White"
+        "White/Black"
       ],
-      "image": "images/trucker-hat.svg",
+      "image": "images/trucker/mesh-trucker-dope.webp",
       "stock": 18
     },
     {
@@ -799,12 +797,11 @@
       "category": "Trucker Hats",
       "price": 1100,
       "wholesalePrice": 800,
-      "description": "High-crown trucker with a contrast panel and mesh back.",
+      "description": "White foam front with a King of Spades print, brown brim and brown mesh back. Snap closure.",
       "colours": [
-        "Red/White",
-        "Green/White"
+        "White/Brown"
       ],
-      "image": "images/trucker-hat.svg",
+      "image": "images/trucker/retro-trucker-king-spades.webp",
       "stock": 4
     },
     {
