@@ -40,7 +40,9 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const port = process.env.PORT || 3000;
   const server = createApp().listen(port, () => {
     console.log(`Olive Caps running on http://localhost:${port} (M-Pesa: ${mpesaMode()})`);
-    if (mpesaMode() === "mock") {
+    if (mpesaMode() === "mock" && process.env.NODE_ENV === "production") {
+      console.log("Live site: customers pay with M-Pesa Send Money. The automatic prompt is off until Daraja is set up.");
+    } else if (mpesaMode() === "mock") {
       console.log("M-Pesa is in test mode: no real prompts are sent. See docs/MPESA-SETUP.md to switch.");
     } else {
       const needed = ["MPESA_CONSUMER_KEY", "MPESA_CONSUMER_SECRET", "MPESA_SHORTCODE", "MPESA_PASSKEY", "MPESA_CALLBACK_URL"];
