@@ -36,6 +36,10 @@ export function getOrder(orderNumber) {
   return request(`/api/orders/${encodeURIComponent(orderNumber)}`);
 }
 
+export function submitMpesaCode(orderNumber, code) {
+  return request(`/api/orders/${encodeURIComponent(orderNumber)}/mpesa-code`, { method: "POST", body: JSON.stringify({ code }) });
+}
+
 export function startMpesaPayment(orderNumber, phone) {
   return request("/api/mpesa/stkpush", { method: "POST", body: JSON.stringify({ orderNumber, phone }) });
 }
@@ -58,4 +62,6 @@ export const admin = {
   setStock: (pw, id, stock) =>
     adminRequest(`/api/admin/products/${id}/stock`, pw, { method: "PATCH", body: JSON.stringify({ stock }) }),
   deleteProduct: (pw, id) => adminRequest(`/api/admin/products/${id}`, pw, { method: "DELETE" }),
+  reviewPayment: (pw, orderNumber, action) =>
+    adminRequest(`/api/admin/orders/${orderNumber}/payment`, pw, { method: "PATCH", body: JSON.stringify({ action }) }),
 };
