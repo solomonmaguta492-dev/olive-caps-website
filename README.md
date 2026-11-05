@@ -93,18 +93,21 @@ An order is marked **paid only when Safaricom's callback confirms it**, and stoc
 - New Era prices in `seed.json` are placeholders too: set your real retail and wholesale prices.
 - `.env`: a strong `ADMIN_PASSWORD` and your Daraja credentials.
 
-## Deployment
+## Deployment (put the site online)
 
-The backend serves the frontend, so one deploy is enough. [Render](https://render.com) or [Railway](https://railway.app):
+The backend serves the website, so one free Render service is enough.
 
-- Root directory: `backend`
-- Build command: `npm install`
-- Start command: `npm start`
-- Add the variables from `.env.example` in the dashboard
+1. Sign up at [render.com](https://render.com) with your GitHub account.
+2. Click **New → Blueprint** and choose the `olive-caps-website` repository. Render reads `render.yaml`.
+3. Click **Apply**. The first build takes a few minutes.
+4. Your site is live at `https://olive-caps-XXXX.onrender.com`. Share that link.
+5. Find the admin password under the service's **Environment** tab (`ADMIN_PASSWORD`). Change it to your own if you like.
 
-Or use the included `render.yaml`: on Render choose **New → Blueprint** and pick this repo.
+Every `git push` to `main` redeploys the site automatically.
 
-The JSON file database is fine for learning and testing, but on free hosting the file resets when the server restarts. Before taking real orders, move to MongoDB or PostgreSQL by replacing `db.js`, or add a persistent disk.
+On the live site (`NODE_ENV=production`) test payments are off: customers pay with **M-Pesa Send Money** and you confirm each payment in the admin dashboard.
+
+**Free plan limits:** the site sleeps after about 15 minutes without visitors and takes up to a minute to wake up. Its files reset when it sleeps or redeploys, so **orders are lost** until the database moves to MongoDB Atlas (see Roadmap).
 
 More detail: [docs/API.md](docs/API.md) and [docs/MPESA-SETUP.md](docs/MPESA-SETUP.md).
 
@@ -114,6 +117,8 @@ More detail: [docs/API.md](docs/API.md) and [docs/MPESA-SETUP.md](docs/MPESA-SET
 - [x] Checkout and orders
 - [x] M-Pesa STK push
 - [x] Admin dashboard
+- [x] M-Pesa Send Money with owner confirmation
+- [ ] MongoDB Atlas database (needed so orders survive restarts on free hosting)
 - [ ] Email/SMS notifications (hook ready in `services/notify.js`)
 - [ ] Customer accounts and order history
 - [ ] Image uploads from the admin dashboard
