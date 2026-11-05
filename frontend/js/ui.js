@@ -58,20 +58,20 @@ export function applyShopSettings(settings) {
   document.querySelectorAll("[data-whatsapp]").forEach((el) => {
     el.href = whatsappLink(el.dataset.whatsapp || "Hi Olive Caps, I'd like to ask about your caps.", number);
   });
+  // Icon buttons keep their icon; plain text links show the number or address.
   document.querySelectorAll("[data-shop-phone]").forEach((el) => {
-    el.textContent = settings.phone;
+    if (!el.children.length) el.textContent = settings.phone;
     el.href = "tel:" + settings.phone.replace(/\s/g, "");
   });
   document.querySelectorAll("[data-shop-email]").forEach((el) => {
-    el.textContent = settings.email;
+    if (!el.children.length) el.textContent = settings.email;
     el.href = "mailto:" + settings.email;
   });
   if (settings.instagram) {
     document.querySelectorAll("[data-shop-instagram]").forEach((el) => {
       el.href = `https://www.instagram.com/${settings.instagram}/`;
-      // Footer links keep their icon and only update the text beside it.
-      const label = el.querySelector("[data-ig-text]") || el;
-      label.textContent = label.textContent.includes("Instagram:") ? `Instagram: @${settings.instagram}` : `@${settings.instagram}`;
+      const label = el.querySelector("[data-ig-text]") || (el.children.length ? null : el);
+      if (label) label.textContent = `@${settings.instagram}`;
     });
   }
   document.querySelectorAll("[data-year]").forEach((el) => {
