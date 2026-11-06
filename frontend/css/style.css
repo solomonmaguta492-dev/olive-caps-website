@@ -1387,3 +1387,47 @@ legend {
 .stat-alert {
   outline: 2px solid var(--mustard);
 }
+
+/* Home page: photo behind the whole page, darkened so text stays readable */
+body.home {
+  background: #1b2012;
+}
+
+body.home::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(rgba(18, 22, 12, 0.5), rgba(18, 22, 12, 0.72)),
+    url("../images/home-background.webp") center 55% / cover no-repeat;
+}
+
+.home .hero {
+  background: transparent;
+  padding: 5rem 0 3.5rem;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+}
+
+.home .hero-inner {
+  grid-template-columns: 1fr;
+}
+
+.home .trust-bar {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.home .trust-bar strong {
+  color: #fff;
+}
+
+.home #shop .section-head h2,
+.home #shop .section-head p,
+.home .result-note {
+  color: #fff;
+}
+
+.home #shop .section-head p,
+.home .result-note {
+  opacity: 0.85;
+}
