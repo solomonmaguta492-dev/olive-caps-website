@@ -195,7 +195,9 @@ async function init() {
     if (note && settings.wholesale?.note) note.textContent = settings.wholesale.note;
     update();
   } catch (err) {
-    grid.innerHTML = `<p class="notice notice-error">We couldn't load the caps. Please refresh the page.</p>`;
+    // Most common cause while building: the server isn't running.
+    const hint = location.port === "5500" ? " Start the server with <strong>npm run dev</strong> in the VS Code terminal." : "";
+    grid.innerHTML = `<p class="notice notice-error">We couldn't load the caps. Please refresh the page.${hint}</p>`;
   }
 }
 
