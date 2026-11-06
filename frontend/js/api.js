@@ -1,8 +1,10 @@
 /*
   All calls to the backend. When the site is served by the backend
   the API is on the same address, so the base is empty.
+  With VS Code Live Server (port 5500) the API is on localhost:3000.
 */
-const API_BASE = window.OLIVE_API_BASE || "";
+const LIVE_SERVER = location.port === "5500" || location.port === "5501";
+const API_BASE = window.OLIVE_API_BASE || (LIVE_SERVER ? `http://${location.hostname}:3000` : "");
 
 async function request(path, options = {}) {
   const res = await fetch(API_BASE + path, {
