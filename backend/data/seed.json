@@ -790,6 +790,88 @@
       "stock": 6
     },
     {
+      "id": "p092",
+      "name": "Panama Fedora, White & Black Band",
+      "category": "Panama Hats",
+      "price": 2500,
+      "wholesalePrice": 1900,
+      "description": "Classic white woven straw fedora with a black band. Light, breathable and smart for sunny days and events.",
+      "colours": [
+        "White/Black"
+      ],
+      "image": "images/panama/panama-fedora-white-black.webp",
+      "stock": 20,
+      "gallery": [
+        "images/panama/panama-fedora-white-black-wood.webp",
+        "images/panama/panama-fedora-white-black-top.webp"
+      ]
+    },
+    {
+      "id": "p093",
+      "name": "Panama Fedora, White & Tan Band",
+      "category": "Panama Hats",
+      "price": 2800,
+      "wholesalePrice": 2100,
+      "description": "Fine white straw fedora with a tan grosgrain band and bow.",
+      "colours": [
+        "White/Tan"
+      ],
+      "image": "images/panama/panama-fedora-white-tan.webp",
+      "stock": 10
+    },
+    {
+      "id": "p094",
+      "name": "Panama Hat, Mustard",
+      "category": "Panama Hats",
+      "price": 2500,
+      "wholesalePrice": 1900,
+      "description": "Bold mustard woven straw hat with a black band. Stands out in the sun.",
+      "colours": [
+        "Mustard/Black"
+      ],
+      "image": "images/panama/panama-mustard.webp",
+      "stock": 8
+    },
+    {
+      "id": "p095",
+      "name": "Straw Fedora with Leather Band, Black",
+      "category": "Panama Hats",
+      "price": 1800,
+      "wholesalePrice": 1300,
+      "description": "Black straw fedora with a wide brim and a brown leather-look band.",
+      "colours": [
+        "Black/Brown"
+      ],
+      "image": "images/panama/straw-fedora-black-leather.webp",
+      "stock": 15
+    },
+    {
+      "id": "p096",
+      "name": "Short Brim Trilby, Tan",
+      "category": "Panama Hats",
+      "price": 1200,
+      "wholesalePrice": 850,
+      "description": "Tan woven trilby with a short brim and black band. Easy everyday style.",
+      "colours": [
+        "Tan/Black"
+      ],
+      "image": "images/panama/trilby-tan.webp",
+      "stock": 20
+    },
+    {
+      "id": "p097",
+      "name": "Straw Cowboy Hat, Cream",
+      "category": "Panama Hats",
+      "price": 2800,
+      "wholesalePrice": 2100,
+      "description": "Cream western straw hat with a curved brim, air vents and a black studded band.",
+      "colours": [
+        "Cream"
+      ],
+      "image": "images/panama/straw-cowboy-cream.webp",
+      "stock": 8
+    },
+    {
       "id": "p036",
       "name": "Feature Lightning Trucker, Brights",
       "category": "Trucker Hats",
