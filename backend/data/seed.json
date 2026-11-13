@@ -705,6 +705,91 @@
       "stock": 10
     },
     {
+      "id": "p086",
+      "name": "Trapper Hat, Black & Brown Fur",
+      "category": "Winter Caps",
+      "price": 1800,
+      "wholesalePrice": 1300,
+      "description": "Warm trapper hat with a black shell, soft brown faux-fur lining and ear flaps that fold up or fasten under the chin.",
+      "colours": [
+        "Black/Brown"
+      ],
+      "image": "images/winter/trapper-black-brown-nylon.webp",
+      "stock": 20,
+      "gallery": [
+        "images/winter/trapper-black-brown-side.webp",
+        "images/winter/trapper-black-brown-front.webp"
+      ]
+    },
+    {
+      "id": "p087",
+      "name": "Trapper Hat, Black & Grey Fur",
+      "category": "Winter Caps",
+      "price": 1800,
+      "wholesalePrice": 1300,
+      "description": "Black trapper hat with thick grey faux fur, ear flaps and a chin strap. Keeps your head and ears warm on cold mornings.",
+      "colours": [
+        "Black/Grey"
+      ],
+      "image": "images/winter/trapper-black-grey.webp",
+      "stock": 15,
+      "gallery": [
+        "images/winter/trapper-black-grey-mannequin.webp"
+      ]
+    },
+    {
+      "id": "p088",
+      "name": "Cross Trapper Hat, Black",
+      "category": "Winter Caps",
+      "price": 2000,
+      "wholesalePrice": 1500,
+      "description": "Black trapper hat with a pink cross patch, faux-fur lining and an adjustable chin cord.",
+      "colours": [
+        "Black/Pink Cross"
+      ],
+      "image": "images/winter/trapper-cross-black.webp",
+      "stock": 8
+    },
+    {
+      "id": "p089",
+      "name": "Leather-look Trapper Hat, Black & Grey",
+      "category": "Winter Caps",
+      "price": 2200,
+      "wholesalePrice": 1700,
+      "description": "Black leather-look trapper with white stitching, grey faux fur and a snap chin strap.",
+      "colours": [
+        "Black/Grey"
+      ],
+      "image": "images/winter/leather-trapper-black-grey.webp",
+      "stock": 8
+    },
+    {
+      "id": "p090",
+      "name": "Leather-look Trapper Hat, Brown",
+      "category": "Winter Caps",
+      "price": 2200,
+      "wholesalePrice": 1700,
+      "description": "Brown leather-look trapper with contrast stitching and brown faux-fur lining.",
+      "colours": [
+        "Brown"
+      ],
+      "image": "images/winter/leather-trapper-brown.webp",
+      "stock": 8
+    },
+    {
+      "id": "p091",
+      "name": "Sheepskin-style Trapper Hat, Brown",
+      "category": "Winter Caps",
+      "price": 2500,
+      "wholesalePrice": 1900,
+      "description": "Rich brown trapper with a smooth leather-look shell and dense brown fur trim.",
+      "colours": [
+        "Brown"
+      ],
+      "image": "images/winter/sheepskin-trapper-brown.webp",
+      "stock": 6
+    },
+    {
       "id": "p036",
       "name": "Feature Lightning Trucker, Brights",
       "category": "Trucker Hats",
