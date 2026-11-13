@@ -1392,3 +1392,33 @@ legend {
 .stat-alert {
   outline: 2px solid var(--mustard);
 }
+
+/* Home banner: caps photo across the whole banner, darkened for readable text */
+.hero-photo {
+  position: relative;
+  background:
+    linear-gradient(90deg, rgba(20, 26, 12, 0.9) 0%, rgba(20, 26, 12, 0.7) 50%, rgba(20, 26, 12, 0.45) 100%),
+    url("../images/hero-background.webp") center / cover no-repeat;
+  min-height: 460px;
+  display: flex;
+  align-items: center;
+}
+
+.hero-photo .hero-inner {
+  grid-template-columns: 1fr;
+}
+
+.hero-photo h1,
+.hero-photo p {
+  max-width: 36rem;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 560px) {
+  .hero-photo {
+    min-height: 420px;
+    background:
+      linear-gradient(rgba(20, 26, 12, 0.72), rgba(20, 26, 12, 0.85)),
+      url("../images/hero-background.webp") center / cover no-repeat;
+  }
+}
