@@ -1392,3 +1392,115 @@ legend {
 .stat-alert {
   outline: 2px solid var(--mustard);
 }
+
+/* Classic home banner: deep olive, serif headline, gold details, arched photo */
+.hero-classic {
+  --gold: #c9a84c;
+  background:
+    radial-gradient(ellipse at 80% 20%, rgba(201, 168, 76, 0.14), transparent 55%),
+    radial-gradient(ellipse at 10% 90%, rgba(0, 0, 0, 0.35), transparent 60%),
+    linear-gradient(160deg, #1f2a12 0%, #2f3d1b 55%, #3d4d21 100%);
+  padding: 4.5rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Fine diagonal texture, like woven fabric */
+.hero-classic::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.025) 0 1px, transparent 1px 7px);
+  pointer-events: none;
+}
+
+.hero-classic .hero-inner {
+  position: relative;
+}
+
+.hero-eyebrow {
+  margin: 0 0 1rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.hero-classic h1 {
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+  font-weight: 700;
+  font-size: clamp(2.4rem, 6.5vw, 4rem);
+  letter-spacing: -0.01em;
+  margin-bottom: 0.4em;
+}
+
+.hero-rule {
+  display: block;
+  width: 72px;
+  height: 2px;
+  margin: 0 0 1.4rem;
+  background: var(--gold);
+}
+
+.hero-classic p:not(.hero-eyebrow) {
+  font-size: 1.12rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.hero-classic .btn {
+  border-radius: 4px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  padding-inline: 1.6rem;
+}
+
+.hero-classic .btn-accent {
+  background: var(--gold);
+}
+
+.hero-classic .btn-accent:hover {
+  background: #b8963d;
+}
+
+/* Arched photo with an offset gold outline */
+.hero-classic .hero-image {
+  position: relative;
+  justify-self: center;
+  width: min(100%, 380px);
+  aspect-ratio: 4 / 5;
+  border-radius: 999px 999px 12px 12px;
+  overflow: visible;
+  box-shadow: none;
+}
+
+.hero-classic .hero-image::after {
+  content: "";
+  position: absolute;
+  inset: -14px 14px 14px -14px;
+  border: 1px solid var(--gold);
+  border-radius: 999px 999px 12px 12px;
+  pointer-events: none;
+}
+
+.hero-classic .hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 999px 999px 12px 12px;
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.45);
+}
+
+@media (max-width: 560px) {
+  .hero-classic {
+    padding: 3rem 0 3.5rem;
+  }
+
+  .hero-classic .hero-image {
+    display: block;
+    width: 70%;
+    margin-top: 1rem;
+  }
+}
