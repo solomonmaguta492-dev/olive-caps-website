@@ -585,6 +585,126 @@
       "stock": 27
     },
     {
+      "id": "p078",
+      "name": "Heartbeat Golf Cap",
+      "category": "Golf Caps",
+      "price": 1200,
+      "wholesalePrice": 850,
+      "description": "Clean cotton cap with a small embroidered heartbeat line. Adjustable strap.",
+      "colours": [
+        "Maroon",
+        "Black",
+        "White"
+      ],
+      "image": "images/golf/heartbeat-maroon.webp",
+      "stock": 30,
+      "gallery": [
+        "images/golf/heartbeat-black-white.webp"
+      ]
+    },
+    {
+      "id": "p079",
+      "name": "Nike Metal Swoosh Cap, Black",
+      "category": "Golf Caps",
+      "price": 2200,
+      "wholesalePrice": 1700,
+      "description": "Black cotton cap with a polished metal swoosh. Adjustable strap.",
+      "colours": [
+        "Black"
+      ],
+      "image": "images/golf/nike-metal-swoosh-black.webp",
+      "stock": 10
+    },
+    {
+      "id": "p080",
+      "name": "Nike Legacy Golf Cap",
+      "category": "Golf Caps",
+      "price": 2200,
+      "wholesalePrice": 1700,
+      "description": "Lightweight golf cap with an embroidered swoosh and a sweat-wicking band.",
+      "colours": [
+        "White",
+        "Black"
+      ],
+      "image": "images/golf/nike-golf-white.webp",
+      "stock": 16,
+      "gallery": [
+        "images/golf/nike-golf-black.webp"
+      ]
+    },
+    {
+      "id": "p081",
+      "name": "Golf Clubs Washed Cap, Green",
+      "category": "Golf Caps",
+      "price": 1400,
+      "wholesalePrice": 1000,
+      "description": "Washed green cotton cap with embroidered crossed golf clubs.",
+      "colours": [
+        "Washed Green"
+      ],
+      "image": "images/golf/golf-clubs-green.webp",
+      "stock": 12
+    },
+    {
+      "id": "p082",
+      "name": "NY Yankees '47 Cap, Maroon",
+      "category": "Golf Caps",
+      "price": 2000,
+      "wholesalePrice": 1500,
+      "description": "Maroon structured cap with a raised white NY logo and a '47 side badge.",
+      "colours": [
+        "Maroon"
+      ],
+      "image": "images/golf/ny-47-maroon.webp",
+      "stock": 8
+    },
+    {
+      "id": "p083",
+      "name": "Feather Badge Cap, Brown",
+      "category": "Golf Caps",
+      "price": 1300,
+      "wholesalePrice": 950,
+      "description": "Brown cap with a metal feather badge and a Freedom tag at the back.",
+      "colours": [
+        "Brown"
+      ],
+      "image": "images/golf/feather-badge-brown.webp",
+      "stock": 10
+    },
+    {
+      "id": "p084",
+      "name": "Plain Golf Cap",
+      "category": "Golf Caps",
+      "price": 900,
+      "wholesalePrice": 600,
+      "description": "Simple plain cap with no logo. Great for everyday wear, uniforms or your own print.",
+      "colours": [
+        "Khaki",
+        "Grey",
+        "Navy",
+        "Red",
+        "Black"
+      ],
+      "image": "images/golf/plain-khaki-grey-navy.webp",
+      "stock": 50,
+      "gallery": [
+        "images/golf/plain-red-black.webp"
+      ]
+    },
+    {
+      "id": "p085",
+      "name": "Under Armour Golf Cap, Black",
+      "category": "Golf Caps",
+      "price": 2200,
+      "wholesalePrice": 1700,
+      "description": "Black performance golf cap with a white logo on the front and side.",
+      "colours": [
+        "Black"
+      ],
+      "image": "images/golf/under-armour-black.webp",
+      "stock": 10
+    },
+    {
       "id": "p036",
       "name": "Feature Lightning Trucker, Brights",
       "category": "Trucker Hats",
