@@ -172,7 +172,8 @@ h3 {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  min-height: 64px;
+  min-height: 76px;
+  padding: 0.4rem 0;
 }
 
 .brand {
@@ -1134,7 +1135,7 @@ legend {
 
   .checkout-layout .panel-summary {
     position: sticky;
-    top: 84px;
+    top: 96px;
   }
 
   .form-grid.two {
