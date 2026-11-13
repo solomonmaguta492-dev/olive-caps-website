@@ -186,8 +186,8 @@ h3 {
 }
 
 .brand img {
-  width: 36px;
-  height: 36px;
+  width: auto;
+  height: 60px;
 }
 
 .main-nav {
@@ -1155,6 +1155,10 @@ legend {
 
   .brand span {
     font-size: 1.05rem;
+  }
+
+  .brand img {
+    height: 52px;
   }
 
   .hero {
