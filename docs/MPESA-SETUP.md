@@ -38,7 +38,7 @@ The site uses **M-Pesa Express (STK push)** from Safaricom's Daraja API. The cus
 3. Set `MPESA_MODE=production` and replace the keys, shortcode and passkey.
 4. Do one real payment of a small amount to confirm everything.
 
-> Till numbers (Buy Goods) use `CustomerBuyGoodsOnline` as the transaction type and may need a different PartyB. Update `services/mpesa.js` if you use a Till.
+> **Till (Buy Goods):** put the store number Safaricom gives you in `MPESA_SHORTCODE` and your Till number in `MPESA_TILL_NUMBER`. The site then sends Buy Goods prompts automatically. Leave `MPESA_TILL_NUMBER` empty for a Paybill.
 
 ## Troubleshooting
 
