@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { parseCallback, mockCallback, darajaTimestamp } from "../services/mpesa.js";
+import { parseCallback, mockCallback, darajaTimestamp, stkTarget } from "../services/mpesa.js";
 
 test("timestamp uses Kenya time in YYYYMMDDHHmmss", () => {
   // 21:30 UTC is 00:30 the next day in Nairobi.
@@ -34,4 +34,12 @@ test("parses a cancelled payment", () => {
 
 test("returns null for a body that is not a callback", () => {
   assert.equal(parseCallback({ hello: "world" }), null);
+});
+
+test("Till numbers use Buy Goods, Paybills use Pay Bill", () => {
+  assert.deepEqual(stkTarget({ shortcode: "174379" }), { TransactionType: "CustomerPayBillOnline", PartyB: "174379" });
+  assert.deepEqual(stkTarget({ shortcode: "7654321", till: "1234567" }), {
+    TransactionType: "CustomerBuyGoodsOnline",
+    PartyB: "1234567",
+  });
 });
