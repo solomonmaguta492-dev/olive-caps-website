@@ -198,3 +198,8 @@ test("Durags category lists the silky and velvet durags", async () => {
   const caps = await (await fetch(`${base}/api/products?category=Durags`)).json();
   assert.deepEqual(caps.map((p) => p.id), ["p076", "p077"]);
 });
+
+test("Golf Caps category lists the 8 golf caps", async () => {
+  const caps = await (await fetch(`${base}/api/products?category=Golf%20Caps`)).json();
+  assert.deepEqual(caps.map((p) => p.id), ["p078", "p079", "p080", "p081", "p082", "p083", "p084", "p085"]);
+});
