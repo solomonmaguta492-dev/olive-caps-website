@@ -1563,6 +1563,106 @@
       ],
       "image": "images/bucket/reversible-bucket-cream-palm.webp",
       "stock": 3
+    },
+    {
+      "id": "p098",
+      "name": "Wide Brim Bow Sun Hat",
+      "category": "Ladies Caps",
+      "price": 1500,
+      "wholesalePrice": 1100,
+      "description": "Elegant wide-brim straw sun hat with a big ribbon bow. Perfect for the beach, garden parties and weddings.",
+      "colours": [
+        "White/Black Bow",
+        "Cream/Black Bow",
+        "Cream/Cream Bow",
+        "Khaki/Khaki Bow"
+      ],
+      "image": "images/ladies/bow-sun-hat-white-black.webp",
+      "stock": 30,
+      "gallery": [
+        "images/ladies/bow-sun-hat-cream-black.webp",
+        "images/ladies/bow-sun-hat-cream.webp",
+        "images/ladies/bow-sun-hat-khaki.webp"
+      ]
+    },
+    {
+      "id": "p099",
+      "name": "Wavy Brim Bow Sun Hat, Khaki",
+      "category": "Ladies Caps",
+      "price": 1500,
+      "wholesalePrice": 1100,
+      "description": "Khaki straw sun hat with a ruffled wavy brim, black trim and a black bow.",
+      "colours": [
+        "Khaki/Black"
+      ],
+      "image": "images/ladies/wavy-bow-sun-hat-khaki.webp",
+      "stock": 10
+    },
+    {
+      "id": "p100",
+      "name": "Leopard Scarf Sun Hat, Black",
+      "category": "Ladies Caps",
+      "price": 1600,
+      "wholesalePrice": 1200,
+      "description": "Black straw sun hat with a wide brim and a leopard-print scarf tied through the brim.",
+      "colours": [
+        "Black/Leopard"
+      ],
+      "image": "images/ladies/leopard-scarf-sun-hat.webp",
+      "stock": 10
+    },
+    {
+      "id": "p101",
+      "name": "Polka Dot Ribbon Sun Hat, White",
+      "category": "Ladies Caps",
+      "price": 1400,
+      "wholesalePrice": 1000,
+      "description": "White straw sun hat with a wavy brim and a black-and-white polka dot ribbon.",
+      "colours": [
+        "White/Polka Dot"
+      ],
+      "image": "images/ladies/polka-dot-sun-hat.webp",
+      "stock": 10
+    },
+    {
+      "id": "p102",
+      "name": "Floral Scarf Sun Hat, Cream",
+      "category": "Ladies Caps",
+      "price": 1500,
+      "wholesalePrice": 1100,
+      "description": "Cream wide-brim straw hat with a soft floral scarf tied in a bow.",
+      "colours": [
+        "Cream/Floral"
+      ],
+      "image": "images/ladies/floral-scarf-sun-hat.webp",
+      "stock": 10
+    },
+    {
+      "id": "p103",
+      "name": "Floppy Straw Sun Hat, Natural",
+      "category": "Ladies Caps",
+      "price": 1300,
+      "wholesalePrice": 950,
+      "description": "Natural floppy straw hat with a very wide brim and a thin gold band. Folds easily into a bag.",
+      "colours": [
+        "Natural"
+      ],
+      "image": "images/ladies/floppy-straw-natural.webp",
+      "stock": 15
+    },
+    {
+      "id": "p104",
+      "name": "Straw Boater with Buckle Band",
+      "category": "Ladies Caps",
+      "price": 1500,
+      "wholesalePrice": 1100,
+      "description": "Flat-top straw boater with a brown leather-look band and gold buckle.",
+      "colours": [
+        "Tan",
+        "Natural"
+      ],
+      "image": "images/ladies/boater-buckle-band.webp",
+      "stock": 15
     }
   ],
   "orders": []
