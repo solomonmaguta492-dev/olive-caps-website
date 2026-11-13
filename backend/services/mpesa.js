@@ -74,6 +74,16 @@ export function parseQueryResult(data) {
 }
 
 /*
+  Paybill: money goes to the shortcode. Till (Buy Goods): the shortcode is
+  the store number from Safaricom and the money goes to the Till number.
+*/
+export function stkTarget({ shortcode, till }) {
+  return till
+    ? { TransactionType: "CustomerBuyGoodsOnline", PartyB: till }
+    : { TransactionType: "CustomerPayBillOnline", PartyB: shortcode };
+}
+
+/*
   Sends the PIN prompt to the customer's phone.
   Returns the CheckoutRequestID that the callback will refer to.
 */
@@ -90,7 +100,7 @@ export async function sendStkPush({ phone, amount, orderNumber }) {
   const baseUrl = BASE_URLS[mode];
   if (!baseUrl) throw new Error(`Unknown MPESA_MODE "${mode}"`);
 
-  const { MPESA_SHORTCODE, MPESA_PASSKEY, MPESA_CALLBACK_URL } = process.env;
+  const { MPESA_SHORTCODE, MPESA_PASSKEY, MPESA_CALLBACK_URL, MPESA_TILL_NUMBER } = process.env;
   if (!MPESA_SHORTCODE || !MPESA_PASSKEY || !MPESA_CALLBACK_URL) {
     throw new Error("M-Pesa shortcode, passkey or callback URL is missing in .env");
   }
@@ -106,10 +116,9 @@ export async function sendStkPush({ phone, amount, orderNumber }) {
       BusinessShortCode: MPESA_SHORTCODE,
       Password: password,
       Timestamp: timestamp,
-      TransactionType: "CustomerPayBillOnline",
+      ...stkTarget({ shortcode: MPESA_SHORTCODE, till: MPESA_TILL_NUMBER }),
       Amount: Math.ceil(amount),
       PartyA: phone,
-      PartyB: MPESA_SHORTCODE,
       PhoneNumber: phone,
       CallBackURL: MPESA_CALLBACK_URL,
       AccountReference: orderNumber.slice(-12),
