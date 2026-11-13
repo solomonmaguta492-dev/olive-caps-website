@@ -208,3 +208,8 @@ test("Winter Caps category lists the 6 trapper hats", async () => {
   const caps = await (await fetch(`${base}/api/products?category=Winter%20Caps`)).json();
   assert.deepEqual(caps.map((p) => p.id), ["p086", "p087", "p088", "p089", "p090", "p091"]);
 });
+
+test("Panama Hats category lists the 6 hats", async () => {
+  const caps = await (await fetch(`${base}/api/products?category=Panama%20Hats`)).json();
+  assert.deepEqual(caps.map((p) => p.id), ["p092", "p093", "p094", "p095", "p096", "p097"]);
+});
